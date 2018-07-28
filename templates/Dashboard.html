@@ -93,6 +93,13 @@
             width: 110px;
             height: 75px;
         }
+        .column-card {
+            margin-bottom: 10px;
+        }
+        .card {
+            border: none;
+
+        }
         .carousel-indicators li {
             background-color: #f5efef;
             border-radius: 50px;
@@ -100,6 +107,17 @@
         }
         .carousel-indicators .active {
             background-color: #2c6add;
+        }
+        .card-text span {
+            color: #008489;
+        }
+        .card-title {
+            color: #a02f18;
+            font-weight: bold;
+        }
+        .card-title span{
+            color: #a02f18;
+            font-weight: lighter;
         }
         #cover {
             position: absolute;
@@ -126,6 +144,9 @@
             font-family: Circular, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
             color: #484848;
         }
+        .nav-pills .nav-link.active {
+            background-color: #008489;
+        } 
         .indvFilter {
             margin: 0px 10px;
             display: inline-block !important;
@@ -140,6 +161,13 @@
         }
         p.top_card {
             width: 100px;
+        }
+        #like {
+            position: absolute;
+            right: 13px;
+            top: 13px;
+            color: #736f6f;
+            text-shadow: 3px 1px 1px #f6f1f169;
         }
         @media (min-width: 744px)
             .a {
@@ -315,19 +343,19 @@
     <div class="filters ">
         <div class="container">
             <nav class="nav nav-pills">
-                <span class="nav-link nav-item indvFilter active">All dates</span>
-                <span class="nav-link nav-item indvFilter active">1 guest</span>
+                <button id="dates" class="nav-link nav-item indvFilter active">All dates</button>
+                <button id="guests" class="nav-link nav-item indvFilter active">1 guest</button>
                 <div class="d-none d-md-block">
-                    <span class="nav-link nav-item indvFilter">Home type</span>
+                    <button id="type" class="nav-link nav-item indvFilter">Home type</button>
                 </div>
                 <div class="d-none d-md-block">
-                    <span class="nav-link nav-item indvFilter">Price</span>
+                    <button id="price" class="nav-link nav-item indvFilter">Price</button>
                 </div>
                 <div class="d-none d-md-block">
-                    <span class="nav-link nav-item indvFilter">More Filters</span>
+                    <button id="more-filters" class="nav-link nav-item indvFilter">More Filters</button>
                 </div>
                 <div class="d-sm-block d-md-none">
-                    <span class="nav-link nav-item indvFilter">1 Filters</span>
+                    <button id="small-more-filters" class="nav-link nav-item indvFilter">Filters</button>
                 </div>
 
                 </div>
@@ -345,7 +373,7 @@
                 <img class="top_card" src="../static/images/florence_top.png" alt="">
                 <p class="top_card">Florence</p>            
             </a></div>
-            <div class="d-block topcity"><a href="">
+            <div class="d-none d-sm-block topcity"><a href="">
                 <img class="top_card" src="../static/images/budapest_top.png" alt="">
                 <p class="top_card">Budapest</p>            
             </a></div>
@@ -362,7 +390,7 @@
     <div class="container">
         <h3 class="destination_header">Homes</h3>
         <div class="row">
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4 column-card">
                 <div class="card">
                     <div id="carouselExampleIndicator1" class="carousel slide" data-ride="carousel" data-interval="false">
                         <ol class="carousel-indicators">
@@ -395,14 +423,14 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <p class="card-title">ENTIRE HOUSE &#x02022; CAPE TOWN</p>
+                        <p class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>
                         <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
                         <p class="card-text">$44 per night &#8901; Free Cancelation</p>
-                        <p class="card-text">&#9733; &#9733; &#9733; &#9734; &#9734; 342</p>
+                        <p class="card-text">&#9733; &#9733; &#9733; 342</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4 column-card">
                 <div class="card">
                     <div id="carouselExampleIndicator2" class="carousel slide" data-ride="carousel" data-interval="false">
                         <ol class="carousel-indicators">
@@ -435,14 +463,18 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <p class="card-title">ENTIRE HOUSE &#x02022; CAPE TOWN</p>
+                        <p class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>
                         <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
                         <p class="card-text">$44 per night</p>
-                        <p class="card-text">&#9733; &#9733; &#9733; &#9734; &#9734; 342</p>
+                        <p class="card-text">
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star-half"></i></i></span> 342</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4 column-card">
                 <div class="card">
                     <div id="carouselExampleIndicator3" class="carousel slide" data-ride="carousel" data-interval="false">
                         <ol class="carousel-indicators">
@@ -475,14 +507,18 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <p class="card-title">ENTIRE HOUSE &#x02022; CAPE TOWN</p>
+                        <p class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>
                         <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
                         <p class="card-text">$44 per night &#8901; Free Cancelation</p>
-                        <p class="card-text">&#9733; &#9733; &#9733; &#9734; &#9734; 342</p>
+                        <p class="card-text">
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star-half"></i></i></span> 342</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4 column-card">
                 <div class="card">
                     <div id="carouselExampleIndicator4" class="carousel slide" data-ride="carousel" data-interval="false">
                         <ol class="carousel-indicators">
@@ -515,14 +551,18 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <p class="card-title">ENTIRE HOUSE &#x02022; CAPE TOWN</p>
+                        <p class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>
                         <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
                         <p class="card-text">$44 per night</p>
-                        <p class="card-text">&#9733; &#9733; &#9733; &#9734; &#9734; 342</p>
+                        <p class="card-text">
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star-half"></i></i></span> 342</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4 column-card">
                 <div class="card">
                     <div id="carouselExampleIndicator5" class="carousel slide" data-ride="carousel" data-interval="false">
                         <ol class="carousel-indicators">
@@ -555,14 +595,18 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <p class="card-title">ENTIRE HOUSE &#x02022; CAPE TOWN</p>
+                        <p class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>
                         <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
                         <p class="card-text">$44 per night</p>
-                        <p class="card-text">&#9733; &#9733; &#9733; &#9734; &#9734; 342</p>
+                        <p class="card-text">
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star-half"></i></i></span> 342</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4 column-card">
                 <div class="card">
                     <div id="carouselExampleIndicator6" class="carousel slide" data-ride="carousel" data-interval="false">
                         <ol class="carousel-indicators">
@@ -593,23 +637,33 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
+                        <i id="like" class="far fa-heart fa-3x"></i>
                     </div>
-                    <div class="card-body">
-                        <p class="card-title">ENTIRE HOUSE &#x02022; CAPE TOWN</p>
+                    <div class="card-body column-card">
+                        <p class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>
                         <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
                         <p class="card-text">$44 per night &#8901; Free Cancelation</p>
-                        <p class="card-text">&#9733; &#9733; &#9733; &#9734; &#9734; 342</p>
+                        <p class="card-text">
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star-half"></i></i></span> 342</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4 column-card">
                 <div class="card">
                     <img class="card-img-top" src="../static/images/one.png" alt="Card image cap">
+                    <i id="like" class="far fa-heart fa-3x"></i>
                     <div class="card-body">
-                        <p class="card-title">ENTIRE HOUSE &#x02022; CAPE TOWN</p>
+                        <p class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>
                         <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
                         <p class="card-text">$44 per night</p>
-                        <p class="card-text">&#9733; &#9733; &#9733; &#9734; &#9734; 342</p>
+                        <p class="card-text">
+                            <span><i class="fas fa-star"></i></span> 
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span> 
+                            <span><i class="fas fa-star-half"></i></i></span> 342</p>
                     </div>
                 </div>
             </div>
@@ -622,6 +676,7 @@
 <!-- <script scr="../static/js/modernizr-mg.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 <script>
+    // hides current modal when switching between the two
     $("#signinFromModal").click(function () {
 	    $("#loginModal").modal("hide");
     });
@@ -630,8 +685,8 @@
 	    $("#registerModal").modal("hide");
     });
 
+    // toggle show password for both login and register modal
     var passwordVisible = false;
-
     $(".getModal").click(function() {
         passwordVisible = false;
     });
@@ -648,7 +703,20 @@
             passwordVisible = !passwordVisible;
         }
     });
+
+    // change heart for like, needs toggle
+    $("#like").click(function() {
+        console.log("like");
+        $(this).attr("class", "fas fa-heart fa-3x");
+    });
+
+    //toggle nav pills to active
+    $(".indvFilter").click(function() {
+        console.log("filter");
+        $(this).addClass("active");
+    });
     
+    // check screen size with Modernizr
     var checkMod = function() {
         if (Modernizr.mq('(min-width: 992px)')) {
             console.log("large");
@@ -670,7 +738,7 @@
         checkMod();
     });
 
-
+    // 
 
 
     
