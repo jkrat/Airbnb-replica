@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
+            font-size: 14px;
+            line-height: 1.43;
+            color: #4a4a4a;
+            padding-top: 150px;
+        }
+       .navbar {
+            height: 55px;
+            background-color: #ffffff;
+            z-index: 100;
+            padding: 18px 18px 0px 18px;
+        }
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .inline {
+            display: inline-block;
+        }
+        .navbar-brand{
+            width: 35px;
+            color: #808080;
+        }
+        .navbar a {
+            color:  #008489;;
+        }
+        .navbar a i {
+            color:  #4a4a4a;;
+        }
+        .small-search-drowpdown-container {
+            position: fixed;
+            top: 48px;
+            z-index: 90;
+            height: 65px;
+            width: 100%;
+            padding: 16px 0px;
+            background-color: #ffffff;
+            color: #808080;
+        }
+        #container {
+            padding: 0px 15px; 
+
+        }
+        #small-search-dropdown {
+            width: 100%;
+            line-height: 45px;
+            border: 1px solid #dedcdc;
+            background-color: #ffffff;
+            border-radius: 2px;
+            padding: 0px 15px; 
+        }
+        #small-search-dropdown input {
+            width: 100%;
+            font-size: 16px;
+            line-height: 16px;
+            border: none;
+            color: #535252;
+            font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
+        }
+        #small-search-dropdown input:focus {
+            outline-width: 0;
+        }
+
+        .search_button {
+            display: none;
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav class="navbar flex-container fixed-top">
+        <div>
+            <a class="navbar-brand inline" href="#">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
+        <div>
+            <span>Where</span>
+        </div>
+        <div>
+            <a href="">Clear</a>
+        </div>
+    </nav>
+
+    <div class="small-search-drowpdown-container">
+        <div id="container">
+            <div id="small-search-dropdown">
+                <input type="text" name="" value="" placeholder="Anywhere">
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- <div>
+        <h6>Recent Searches</h6>
+    </div> -->
+
+
+
+            
+
+
+
+    
+
+
+
+    
+
+
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- <script scr="../static/js/modernizr-mg.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+<script>
+    // hides current modal when switching between the two
+    $("#signinFromModal").click(function () {
+	    $("#loginModal").modal("hide");
+    });
+
+    $("#loginFromModal").click(function () {
+	    $("#registerModal").modal("hide");
+    });
+
+    // toggle show password for both login and register modal
+    var passwordVisible = false;
+    $(".getModal").click(function() {
+        passwordVisible = false;
+    });
+
+    $(".showpassword").click(function( event ) {
+        event.preventDefault();
+        if (passwordVisible) {
+            $(".passwordInput").attr("type","password");
+            $(".showpassword").text("Show password")
+            passwordVisible = !passwordVisible;
+        } else {
+            $(".passwordInput").attr("type","text");
+            $(".showpassword").text("Hide password")
+            passwordVisible = !passwordVisible;
+        }
+    });
+
+    // change heart for like, needs toggle
+    $("#like").click(function() {
+        console.log("like");
+        $(this).attr("class", "fas fa-heart fa-3x");
+    });
+
+    //toggle nav pills to active
+    $(".indvFilter").click(function() {
+        console.log("filter");
+        $(this).addClass("active");
+    });
+    
+    // check screen size with Modernizr
+    var checkMod = function() {
+        if (Modernizr.mq('(min-width: 992px)')) {
+            console.log("large");
+            return "large";
+        } else if (Modernizr.mq('(min-width: 768px)')) {
+            console.log("medium");
+            return "medium";
+        } else if (Modernizr.mq('(min-width: 576px)')) {
+            console.log("small");
+            return "small";
+        } else {
+            console.log("extra-small");
+            return "extra-small";
+        }
+    };
+   
+    $(function() {
+        $(window).resize(checkMod);
+        checkMod();
+    });
+
+    // 
+
+
+    
+
+
+
+</script>
+    
+</body>
+</html>

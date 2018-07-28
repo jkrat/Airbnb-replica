@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
+            font-size: 14px;
+            line-height: 1.43;
+            color: #4a4a4a;
+            padding-top: 150px;
+        }
+       .navbar {
+            height: 70px;
+            background-color: #ffffff;
+            z-index: 100;
+            padding: .7rem 1rem;
+            border-bottom: 1px solid #dedcdc;
+        }
+        .searchbar_div{
+            width: 430px;
+            height: 45px; 
+            position: relative;
+            background-color: #ffffff;
+            border-radius: 5px;
+            border: 1px solid #dedcdc;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 3px;
+            font-size: 18px;
+            line-height: 24px;
+        }
+        #search_icon {
+            padding-left: 7px;
+            padding-top: 2px;
+        }
+        .search_input {
+            width: 100%;
+            border: 0px;
+            padding: 11px;
+            font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
+            font-size: 16px;
+            line-height: 22px;
+            color: #4a4a4a;
+            text-overflow: ellipsis;
+        }
+        .search_input:focus {
+            outline-width: 0;
+        }
+        .search_button {
+            display: none;
+        }
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .navbar-brand{
+            width: 35px;
+        }
+        .navbar-brand img{
+            width: 43px;
+            height: 43px;
+        }
+        #arrowdown {
+            color: #a3a1a1;
+        }
+        #search_icon img{
+            width: 34px;
+            height: 34px;
+        }
+        #small-window-search {
+            border: none;
+            width: 100%;
+            text-align: left;
+        }
+        #small-window-search span {
+            color: #8c8989;
+            font-size: 16px;
+            font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
+        }
+        .small-search-button-div {
+            margin-left: 15px;
+        }
+        .top_destinations {
+            padding: 5px 0px;
+            margin: 15px 0px;
+            display: flex;
+            justify-content: space-around;
+            overflow-x: scroll;
+        }
+        .top_destination_header {
+            margin: 15px 0px;
+        }
+        .topcity {
+            text-align: center;
+            border: 1px solid #dedcdc;
+        }
+        .topcity img {
+            width: 110px;
+            height: 75px;
+        }
+        .column-card {
+            margin-bottom: 10px;
+        }
+        .card {
+            border: none;
+
+        }
+        .carousel-indicators li {
+            background-color: #f5efef;
+            border-radius: 50px;
+            width: .4rem;
+        }
+        .carousel-indicators .active {
+            background-color: #2c6add;
+        }
+        .card-text span {
+            color: #008489;
+        }
+        .card-title {
+            color: #a02f18;
+            font-weight: bold;
+        }
+        .card-title span{
+            color: #a02f18;
+            font-weight: lighter;
+        }
+        #cover {
+            position: absolute;
+            top: -97px;
+            z-index: 20;
+            height: 220px;
+            width: 100%;
+            background-color: #ffffff;
+        }
+        .filters {
+            position: fixed;
+            top: 64px;
+            z-index: 90;
+            height: 65px;
+            width: 100%;
+            padding: 16px 0px;
+            background-color: #ffffff;
+            color: #808080;
+            border-bottom: 1px solid #dedcdc;
+        }
+        filters a {
+            line-height: 18px;
+            letter-spacing: -0.2px;
+            font-family: Circular, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+            color: #484848;
+        }
+        .nav-pills .nav-link.active {
+            background-color: #008489;
+        } 
+        .indvFilter {
+            margin: 0px 10px;
+            display: inline-block !important;
+            vertical-align: top !important;
+        }
+        .inline {
+            display: inline-block;
+        }
+        .top_card{ 
+            display: inline-block;
+            color: #4a4a4a;
+        }
+        p.top_card {
+            width: 100px;
+        }
+        #like {
+            position: absolute;
+            right: 13px;
+            top: 13px;
+            color: #736f6f;
+            text-shadow: 3px 1px 1px #f6f1f169;
+        }
+        @media (min-width: 744px)
+            .a {
+            }
+
+        /*  Move to login HTML */
+        #loginModal .form-control, #registerModal .form-control {
+        border: 1px solid #a8a7a7;
+        }
+        #loginModal .flex-container, #registerModal .flex-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        #loginModal button, #registerModal button {
+            margin-bottom: 10px;
+        }
+        #loginModal p, #registerModal .btn-primary  {
+            margin-top: 20px;
+        }
+         /*  Move to login HTML */
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Move to Navbar HTML -->
+    <nav class="navbar flex-container navbar-expand-lg fixed-top">
+        <div>
+            <div class="inline">
+                <a class="navbar-brand inline" href="#">
+                    <img src="../static/images/airbnb-logo.png" alt="">
+                    <div class="d-inline d-sm-inline d-lg-none"><i id="arrowdown" class="fas fa-angle-down"></i></div>
+                </a>
+            </div>
+
+
+
+            <div class="inline small-search-button-div">
+                <div class="searchbar_div d-flex">
+                    <button id="small-window-search" aria-label="Open search" type="button" class="">
+                        <span id="search_icon" class="inline"><img src="../static/images/search_icon.png" alt=""></span>
+                        <span id="search_icon" class="inline">Anywhere &#x02022; Homes</span>
+                    </button>    
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div>
+            <div class="collapse navbar-collapse"> 
+                <a class="nav-link" href="#">Become a host</a>
+                <a class="nav-link getModal" data-toggle="modal" href="#registerModal">Sign Up</a>
+                <a class="nav-link getModal" data-toggle="modal" href="#loginModal">Log in</a>
+            </div> 
+        </div>
+    </nav>
+    <!-- Move to Navbar HTML -->
+
+    <!-- Move to register HTML -->
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <form class="form-signin" action="" method="POST">
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" value="" placeholder="Email address">
+                        </div>
+                        <div class="form-group">
+                            <input type="firstName" class="form-control" name="firstName" value="" placeholder="First name">
+                        </div>
+                        <div class="form-group">
+                            <input type="lastName" class="form-control" name="lastName" value="" placeholder="Last name">
+                        </div>
+                        <div class="form-group">
+                            <input class="passwordInput" type="password" class="form-control" name="password" value="" placeholder="Create a Password" data-ng-required="">
+                        </div>
+                        <div class="flex-container mb-3">
+                            <label for=""><input type="checkbox" value="remember-me">  Remember me</label>
+                            <a class="showpassword" href="#">Show password</a>
+                        </div>
+                        <h5>Birthday</h5>
+                        <p>To sign up, you must be 18 or older. Other people won't see your birthday.</p>
+                        <div class="input-group mb-3">
+                            <select class="custom-select" id="inputGroupSelect01">
+                                <option selected disabled>Month</option>
+                                <option value="January">January</option>
+                                <option value="February">February</option>
+                                <option value="March">March</option>
+                                <option value="April">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="August">August</option>
+                                <option value="September">September</option>
+                                <option value="October">October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
+                            </select>
+                            <select class="custom-select" id="inputGroupSelect01">
+                                <option selected disabled>Day</option>
+                                <!-- {% for day in days %}
+                                <option value="1">day</option>
+                                {% endfor %} -->
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                            <select class="custom-select" id="inputGroupSelect01">
+                                <option selected disabled>Year</option>
+                                <!-- {% for year in years %}
+                                <option value="1">year</option>
+                                {% endfor %} -->
+                                <option value="2000">2000</option>
+                                <option value="1999">1999</option>
+                            </select> 
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+                            <p>Already have an Airbnb account? <span><a id="loginFromModal" data-toggle="modal" href="#loginModal">Log in</a></span></p>
+                        </div>
+                    </form>              
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Move to register HTML -->
+
+    <!-- Move to login HTML -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Log in</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <form class="form" action="" method="POST">
+                        <h1 class="h3 mb-3 font-weight-normal"></h1>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" value="" placeholder="Email Address">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="passwordInput form-control" name="password" value="" placeholder="Password" data-ng-required="">
+                        </div>
+                        <div class="flex-container mb-3">
+                            <label for=""><input type="checkbox" value="remember-me">  Remember me</label>
+                            <a class="showpassword" href="#">Show password</a>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-primary btn-block">Log in</button>
+                        <a class="pass" href="">Forgot password?</a>
+                        <p>Don't have an account? <span><a id="signinFromModal" data-toggle="modal" href="#registerModal">Sign in</a></span></p>
+                    </form>    
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Move to login HTML -->
+
+    <!-- Move to Navbar HTML -->
+    <div class="filters ">
+        <div class="container">
+            <nav class="nav nav-pills">
+                <button id="dates" class="nav-link nav-item indvFilter active">All dates</button>
+                <button id="guests" class="nav-link nav-item indvFilter active">1 guest</button>
+                <div class="d-none d-md-block">
+                    <button id="type" class="nav-link nav-item indvFilter">Home type</button>
+                </div>
+                <div class="d-none d-md-block">
+                    <button id="price" class="nav-link nav-item indvFilter">Price</button>
+                </div>
+                <div class="d-none d-md-block">
+                    <button id="more-filters" class="nav-link nav-item indvFilter">More Filters</button>
+                </div>
+                <div class="d-sm-block d-md-none">
+                    <button id="small-more-filters" class="nav-link nav-item indvFilter">Filters</button>
+                </div>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div id="cover"></div>
+    <!-- Move to Navbar HTML -->
+
+    <div class="container">
+        <h5 class="top_destination_header">Travel the world with Airbnb</h5>
+        <div class="top_destinations">
+            <div class="d-block topcity"><a href="">
+                <img class="top_card" src="../static/images/florence_top.png" alt="">
+                <p class="top_card">Florence</p>            
+            </a></div>
+            <div class="d-none d-sm-block topcity"><a href="">
+                <img class="top_card" src="../static/images/budapest_top.png" alt="">
+                <p class="top_card">Budapest</p>            
+            </a></div>
+            <div class="d-none d-md-block topcity"><a href="">
+                <img class="top_card" src="../static/images/florence_top.png" alt="">
+                <p class="top_card">New York City</p>            
+            </a></div>
+            <div class="d-none d-lg-block topcity"><a href="">
+                <img class="top_card" src="../static/images/budapest_top.png" alt="">
+                <p class="top_card">Athens</p>            
+            </a></div>
+        </div>
+    </div>
+    <div class="container">
+        <h3 class="destination_header">Homes</h3>
+        <div class="row">
+            <div class="col-md-6 col-lg-4 column-card">
+                <div class="card">
+                    <div id="carouselExampleIndicator1" class="carousel slide" data-ride="carousel" data-interval="false">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="../static/images/one.png" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/two.png" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/three.png" alt="Third slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/four.png" alt="Third slide">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicator1" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicator1" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>
+                        <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
+                        <p class="card-text">$44 per night &#8901; Free Cancelation</p>
+                        <p class="card-text">&#9733; &#9733; &#9733; 342</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 column-card">
+                <div class="card">
+                    <div id="carouselExampleIndicator2" class="carousel slide" data-ride="carousel" data-interval="false">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="../static/images/one.png" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/two.png" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/three.png" alt="Third slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/four.png" alt="Third slide">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicator2" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicator2" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>
+                        <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
+                        <p class="card-text">$44 per night</p>
+                        <p class="card-text">
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star-half"></i></i></span> 342</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 column-card">
+                <div class="card">
+                    <div id="carouselExampleIndicator3" class="carousel slide" data-ride="carousel" data-interval="false">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="../static/images/one.png" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/two.png" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/three.png" alt="Third slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/four.png" alt="Third slide">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicator3" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicator3" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>
+                        <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
+                        <p class="card-text">$44 per night &#8901; Free Cancelation</p>
+                        <p class="card-text">
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star-half"></i></i></span> 342</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 column-card">
+                <div class="card">
+                    <div id="carouselExampleIndicator4" class="carousel slide" data-ride="carousel" data-interval="false">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="../static/images/one.png" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/two.png" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/three.png" alt="Third slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/four.png" alt="Third slide">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicator4" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicator4" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>
+                        <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
+                        <p class="card-text">$44 per night</p>
+                        <p class="card-text">
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star-half"></i></i></span> 342</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 column-card">
+                <div class="card">
+                    <div id="carouselExampleIndicator5" class="carousel slide" data-ride="carousel" data-interval="false">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="../static/images/one.png" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/two.png" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/three.png" alt="Third slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/four.png" alt="Third slide">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicator5" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicator5" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>
+                        <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
+                        <p class="card-text">$44 per night</p>
+                        <p class="card-text">
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star-half"></i></i></span> 342</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 column-card">
+                <div class="card">
+                    <div id="carouselExampleIndicator6" class="carousel slide" data-ride="carousel" data-interval="false">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="../static/images/one.png" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/two.png" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/three.png" alt="Third slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="../static/images/four.png" alt="Third slide">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicator6" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicator6" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        <i id="like" class="far fa-heart fa-3x"></i>
+                    </div>
+                    <div class="card-body column-card">
+                        <p class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>
+                        <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
+                        <p class="card-text">$44 per night &#8901; Free Cancelation</p>
+                        <p class="card-text">
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span> 
+                                <span><i class="fas fa-star-half"></i></i></span> 342</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 column-card">
+                <div class="card">
+                    <img class="card-img-top" src="../static/images/one.png" alt="Card image cap">
+                    <i id="like" class="far fa-heart fa-3x"></i>
+                    <div class="card-body">
+                        <p class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>
+                        <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
+                        <p class="card-text">$44 per night</p>
+                        <p class="card-text">
+                            <span><i class="fas fa-star"></i></span> 
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span> 
+                            <span><i class="fas fa-star-half"></i></i></span> 342</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- <script scr="../static/js/modernizr-mg.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+<script>
+    // hides current modal when switching between the two
+    $("#signinFromModal").click(function () {
+	    $("#loginModal").modal("hide");
+    });
+
+    $("#loginFromModal").click(function () {
+	    $("#registerModal").modal("hide");
+    });
+
+    // toggle show password for both login and register modal
+    var passwordVisible = false;
+    $(".getModal").click(function() {
+        passwordVisible = false;
+    });
+
+    $(".showpassword").click(function( event ) {
+        event.preventDefault();
+        if (passwordVisible) {
+            $(".passwordInput").attr("type","password");
+            $(".showpassword").text("Show password")
+            passwordVisible = !passwordVisible;
+        } else {
+            $(".passwordInput").attr("type","text");
+            $(".showpassword").text("Hide password")
+            passwordVisible = !passwordVisible;
+        }
+    });
+
+    // change heart for like, needs toggle
+    $("#like").click(function() {
+        console.log("like");
+        $(this).attr("class", "fas fa-heart fa-3x");
+    });
+
+    //toggle nav pills to active
+    $(".indvFilter").click(function() {
+        console.log("filter");
+        $(this).addClass("active");
+    });
+    
+    // check screen size with Modernizr
+    var checkMod = function() {
+        if (Modernizr.mq('(min-width: 992px)')) {
+            console.log("large");
+            return "large";
+        } else if (Modernizr.mq('(min-width: 768px)')) {
+            console.log("medium");
+            return "medium";
+        } else if (Modernizr.mq('(min-width: 576px)')) {
+            console.log("small");
+            return "small";
+        } else {
+            console.log("extra-small");
+            return "extra-small";
+        }
+    };
+   
+    $(function() {
+        $(window).resize(checkMod);
+        checkMod();
+    });
+
+    // 
+
+
+    
+
+
+
+</script>
+    
+</body>
+</html>
