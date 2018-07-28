@@ -22,6 +22,10 @@
             background-color: #ffffff;
             z-index: 100;
         }
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+        }
         .navbar-brand{
             width: 30px;
             height: 40px;
@@ -41,7 +45,7 @@
             height: 34px;
         }
         .search {
-            width: 400px;
+            width: 350px;
         }
         .search-spacer{
             width: 150px;
@@ -101,6 +105,12 @@
             display: inline-block !important;
             vertical-align: top !important;
         }
+        .inline {
+            display: inline-block;
+        }
+        @media (min-width: 744px)
+            ._5nim5h {
+            }
 
         /*  Move to login HTML */
         #loginModal .form-control, #registerModal .form-control {
@@ -122,28 +132,28 @@
 </head>
 <body>
     <!-- Move to Navbar HTML -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <a class="navbar-brand" href="#"><img src="../static/images/airbnb-logo.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div id="search_icon">
-                <img src="../static/images/search_icon.png" alt="">
+    <nav class="navbar flex-container navbar-expand-md fixed-top">
+        <div>
+            <div class="inline">
+                <a class="navbar-brand inline" href="#"><img src="../static/images/airbnb-logo.png" alt=""></a>
+                <div class="d-inline d-sm-inline d-md-none"><h5 class="inline">&#8744;</h5></div>
             </div>
-            <input class="form-control mr-sm-6 search" type="search" placeholder="Search" aria-label="Search">
-            <div class="search-spacer">
+            <div class="inline">
+                <div id="search_icon" class="inline"> 
+                    <img src="../static/images/search_icon.png" alt="">
+                </div>
+                <div class="d-inline d-sm-inline d-md-none"><input class="form-control mr-sm-6 search inline" type="search" placeholder="Search" aria-label="Search"></div>
             </div>
-            <!-- <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <form class="form-inline my-2 my-lg-1">
-                        <input class="form-control mr-sm-6" type="search" placeholder="Search" aria-label="Search">
-                    </form>
-                </li>
-            </ul> -->
-            <a class="nav-link" href="#">Become a host</a>
-            <a class="nav-link getModal" data-toggle="modal" href="#registerModal">Sign Up</a>
-            <a class="nav-link getModal" data-toggle="modal" href="#loginModal">Log in</a>
+        </div>
+        <div>
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button> -->
+            <div class="collapse navbar-collapse"> 
+                <a class="nav-link" href="#">Become a host</a>
+                <a class="nav-link getModal" data-toggle="modal" href="#registerModal">Sign Up</a>
+                <a class="nav-link getModal" data-toggle="modal" href="#loginModal">Log in</a>
+            </div> 
         </div>
     </nav>
     <!-- Move to Navbar HTML -->
@@ -339,10 +349,10 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <p class="card-title">ENTIRE HOUSE - CAPE TOWN</p>
+                        <p class="card-title">ENTIRE HOUSE &#x02022; CAPE TOWN</p>
                         <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
-                        <p class="card-text">$44 per night</p>
-                        <p class="card-text">**** 342 - Superhost</p>
+                        <p class="card-text">$44 per night &#8901; Free Cancelation</p>
+                        <p class="card-text">&#9733; &#9733; &#9733; &#9734; &#9734; 342</p>
                     </div>
                 </div>
             </div>
@@ -379,10 +389,10 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <p class="card-title">ENTIRE HOUSE - CAPE TOWN</p>
+                        <p class="card-title">ENTIRE HOUSE &#x02022; CAPE TOWN</p>
                         <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
                         <p class="card-text">$44 per night</p>
-                        <p class="card-text">**** 342 - Superhost</p>
+                        <p class="card-text">&#9733; &#9733; &#9733; &#9734; &#9734; 342</p>
                     </div>
                 </div>
             </div>
@@ -419,10 +429,10 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <p class="card-title">ENTIRE HOUSE - CAPE TOWN</p>
+                        <p class="card-title">ENTIRE HOUSE &#x02022; CAPE TOWN</p>
                         <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
-                        <p class="card-text">$44 per night</p>
-                        <p class="card-text">**** 342 - Superhost</p>
+                        <p class="card-text">$44 per night &#8901; Free Cancelation</p>
+                        <p class="card-text">&#9733; &#9733; &#9733; &#9734; &#9734; 342</p>
                     </div>
                 </div>
             </div>
@@ -459,10 +469,10 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <p class="card-title">ENTIRE HOUSE - CAPE TOWN</p>
+                        <p class="card-title">ENTIRE HOUSE &#x02022; CAPE TOWN</p>
                         <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
                         <p class="card-text">$44 per night</p>
-                        <p class="card-text">**** 342 - Superhost</p>
+                        <p class="card-text">&#9733; &#9733; &#9733; &#9734; &#9734; 342</p>
                     </div>
                 </div>
             </div>
@@ -499,10 +509,10 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <p class="card-title">ENTIRE HOUSE - CAPE TOWN</p>
+                        <p class="card-title">ENTIRE HOUSE &#x02022; CAPE TOWN</p>
                         <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
                         <p class="card-text">$44 per night</p>
-                        <p class="card-text">**** 342 - Superhost</p>
+                        <p class="card-text">&#9733; &#9733; &#9733; &#9734; &#9734; 342</p>
                     </div>
                 </div>
             </div>
@@ -539,10 +549,10 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <p class="card-title">ENTIRE HOUSE - CAPE TOWN</p>
+                        <p class="card-title">ENTIRE HOUSE &#x02022; CAPE TOWN</p>
                         <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
-                        <p class="card-text">$44 per night</p>
-                        <p class="card-text">**** 342 - Superhost</p>
+                        <p class="card-text">$44 per night &#8901; Free Cancelation</p>
+                        <p class="card-text">&#9733; &#9733; &#9733; &#9734; &#9734; 342</p>
                     </div>
                 </div>
             </div>
@@ -550,10 +560,10 @@
                 <div class="card">
                     <img class="card-img-top" src="../static/images/one.png" alt="Card image cap">
                     <div class="card-body">
-                        <p class="card-title">ENTIRE HOUSE - CAPE TOWN</p>
+                        <p class="card-title">ENTIRE HOUSE &#x02022; CAPE TOWN</p>
                         <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
                         <p class="card-text">$44 per night</p>
-                        <p class="card-text">**** 342 - Superhost</p>
+                        <p class="card-text">&#9733; &#9733; &#9733; &#9734; &#9734; 342</p>
                     </div>
                 </div>
             </div>
@@ -563,6 +573,8 @@
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- <script scr="../static/js/modernizr-mg.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 <script>
     $("#signinFromModal").click(function () {
 	    $("#loginModal").modal("hide");
@@ -573,7 +585,7 @@
     });
 
     var passwordVisible = false;
-    
+
     $(".getModal").click(function() {
         passwordVisible = false;
     });
@@ -590,6 +602,32 @@
             passwordVisible = !passwordVisible;
         }
     });
+    
+    var checkMod = function() {
+        if (Modernizr.mq('(min-width: 922px)')) {
+            console.log("large");
+            return "large";
+        } else if (Modernizr.mq('(min-width: 768px)')) {
+            console.log("medium");
+            return "medium";
+        } else if (Modernizr.mq('(min-width: 576px)')) {
+            console.log("small");
+            return "small";
+        } else {
+            console.log("extra-small");
+            return "extra-small";
+        }
+    };
+   
+    $(function() {
+        $(window).resize(checkMod);
+        checkMod();
+    });
+
+
+
+
+    
 
 
 
