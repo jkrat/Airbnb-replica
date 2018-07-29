@@ -13,26 +13,28 @@
         }
         body {
             font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
-            font-size: 14px;
+            font-size: 16px;
             line-height: 1.43;
-            color: #ffffff;
-            padding-top:290px;
-            background-image: url("../static/images/vietnam.jpg");
+            color: #4a4a4a;
+            padding-top: 90px;
         }
        .navbar {
             height: 70px;
-            background: transparent;
+            background-color: #ffffff;  
             z-index: 100;
+            padding: .7rem 1rem;
         }
         .searchbar_div{
-            width: 100%;
+            width: 430px;
             height: 45px; 
             position: relative;
-            background: transparent;
+            background-color: #ffffff;
+            border-radius: 5px;
+            border: 1px solid #dedcdc;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             padding: 3px;
             font-size: 18px;
             line-height: 24px;
-            background-color: #ffffff;
         }
         #search_icon {
             padding-left: 7px;
@@ -41,11 +43,10 @@
         .search_input {
             width: 100%;
             border: 0px;
-            padding: 6px 12px;
+            padding: 11px;
             font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
-            font-size: 22px;
-            line-height: 24px;
-            background-color: #ffffff;
+            font-size: 16px;
+            line-height: 22px;
             color: #4a4a4a;
             text-overflow: ellipsis;
         }
@@ -73,34 +74,62 @@
             width: 34px;
             height: 34px;
         }
+        
         .inline {
             display: inline-block;
         }
-        .hero {
-            background: transparent;
-            width: 60%;
+
+
+        /*  Move to login HTML */
+        #loginModal .form-control, #registerModal .form-control {
+        border: 1px solid #a8a7a7;
         }
-        .hero form {
-            margin-top: 1.5rem;
-            border: 1px solid #dedcdc;
-            border-radius: 5px;
-            height: 70px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            background-color: #ffffff;
+        #loginModal .flex-container, #registerModal .flex-container {
+            display: flex;
+            justify-content: space-between;
         }
-        a {
-            color: #ffffff;
-            font-size: 15px;
-            /* font-family: Helvetica Bold Condensed; */
+        #loginModal button, #registerModal button {
+            margin-bottom: 10px;
         }
-        
+        #loginModal p, #registerModal .btn-primary  {
+            margin-top: 20px;
+        }
+         /*  Move to login HTML */
+
+     
+        .main {
+            margin: 0px 25px;
+            font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
+        }
+        .main i {
+            margin: 0px 15px;
+            color: #008489;
+        }
+        .main a {
+            /* color: #008489; */
+            color: #4a4a4a;
+        }
+        ul {
+            list-style: none;
+            padding: 0px;
+        }
+        .main li {
+            margin: 20px 0px;
+        }
+        .home-link {
+            margin-top: 20px;
+        }
+        hr {
+            margin: 3rem 0rem;
+        }
+
+
 
 
 
     </style>
 </head>
 <body>
-    <!-- Move to Navbar HTML -->
     <nav class="navbar flex-container navbar-expand-lg fixed-top">
         <div>
             <div class="inline">
@@ -109,33 +138,85 @@
                     <div class="d-inline d-sm-inline d-lg-none"><i id="arrowdown" class="fas fa-angle-down"></i></div>
                 </a>
             </div>
-        </div>
-        <div>
-            <div class="collapse navbar-collapse"> 
-                <a class="nav-link" href="#"><h6>Become a host</h6></a>
-                <a class="nav-link" href="#"><h6>Sign up</h6></a>
-                <a class="nav-link" href="#"><h6>Log in</h6></a>
-            </div> 
-        </div>
-    </nav>
-    <!-- Move to Navbar HTML -->
-
-    
-
-    <div class="hero container">
-            <h1>Book unique homes and<br> experiences all over the world.</h1>
-            <form class="form-inline" action="">
+            <div class="inline">
+                <form class="form-inline mx-3" action="">
                     <div class="searchbar_div d-flex">
                         <div id="search_icon" class="inline">
                             <img src="../static/images/search_icon.png" alt="">     
                         </div>
-                            <input class="search_input" id="search_id" class="controls" type="text" name="html_loc" value="" placeholder='Try "Homes in Vietnam"'>
+                            <input class="search_input" id="search_id" class="controls" type="text" name="html_loc" value="" placeholder="Destination, City, Address">
                             <button class="btn search_button" type="submit">Search</button>
                         </div>
                     </div>
                 </form>
-    </div>
+            </div>
+        </div>
+        <div>
+            <div class="collapse navbar-collapse"> 
+                <a class="nav-link" href="#">Become a host</a>
+                <a class="nav-link getModal" data-toggle="modal" href="#registerModal">Sign Up</a>
+                <a class="nav-link getModal" data-toggle="modal" href="#loginModal">Log in</a>
+            </div> 
+        </div>
+    </nav>
 
+    <div class="main">
+        <div class="home-link">
+            <a href=""><div>Home</div></a>
+        </div>
+        <hr>
+        <div class="roomtype">
+            <ul>
+                <li>
+                    <a href="">
+                        <div class="flex-container">
+                            <span>Profile</span>
+                            <i class="fas fa-user-circle fa-lg"></i>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="flex-container">
+                            <span>Trips</span>
+                            <i class="fas fa-suitcase fa-lg"></i>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="flex-container">
+                            <span>Messages</span>
+                            <i class="far fa-envelope fa-lg"></i>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="flex-container">
+                            <span>Favorites</span>
+                            <i class="far fa-heart fa-lg"></i>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <div class="flex-container">
+                            <span>Become a Host</span>
+                            <i class="fas fa-home fa-lg"></i>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <hr>
+        <div>
+            <ul>
+                <li><a href=""><div>Logout</div></a></li>
+            </ul>      
+        </div>
+        <hr>
+    </div>
 
 
 <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
