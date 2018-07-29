@@ -111,14 +111,14 @@ filters a {
     display: inline-block !important;
     vertical-align: top !important;
 }
-.top_destinations {
+.top-destinations {
     padding: 5px 0px;
     margin: 15px 0px;
     display: flex;
     justify-content: space-around;
     overflow-x: scroll;
 }
-.top_destination_header {
+.top-destination-header {
     margin: 15px 0px;
 }
 .topcity {
@@ -132,7 +132,7 @@ filters a {
 .column-card {
     margin-bottom: 10px;
 }
-.card {
+.card {  
     border: none;
 
 }
@@ -144,9 +144,9 @@ filters a {
 .carousel-indicators .active {
     background-color: #2c6add;
 }
-.card-text span {
+/* .card-text span {
     color: #00a699;
-}
+} */
 .card-title {
     color: #a02f18;
     font-weight: bold;
@@ -155,11 +155,11 @@ filters a {
     color: #a02f18;
     font-weight: lighter;
 }
-.top_card{ 
+.top-card{ 
     display: inline-block;
     color: #4a4a4a;
 }
-p.top_card {
+p.top-card {
     width: 100px;
 }
 #like {

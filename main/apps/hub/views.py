@@ -6,5 +6,3 @@ def landing(request):
 def home(request):
     return render(request, "hub/dashboard.html")
 
-def listing(request):
-    return render(request, "hub/listing.html")
