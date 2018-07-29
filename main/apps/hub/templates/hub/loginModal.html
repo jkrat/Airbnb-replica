@@ -1,0 +1,35 @@
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginmodal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Log in to continue</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <form class="form" action="" method="POST">
+                        {% csrf_token %}
+                        <h1 class="h3 mb-3 font-weight-normal"></h1>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" value="" placeholder="Email Address">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="passwordInput form-control" name="password" value="" placeholder="Password" data-ng-required="">
+                        </div>
+                        <div class="flex-container mb-3">
+                            <label for=""><input type="checkbox" value="remember-me">  Remember me</label>
+                            <a class="showpassword greentext" href="#">Show password</a>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-block rausch-bg">Log in</button>
+                        <a class="greentext" href="">Forgot password?</a>
+                        <hr>
+                        <p>Don't have an account? <span><a id="signinFromModal" data-toggle="modal" href="#registerModal">Sign in</a></span></p>
+                    </form>    
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>

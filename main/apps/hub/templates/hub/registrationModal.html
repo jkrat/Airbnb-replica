@@ -1,0 +1,67 @@
+
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Register</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <form class="form-signin" action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" value="" placeholder="Email address">
+                    </div>
+                    <div class="form-group">
+                        <input type="firstName" class="form-control" name="firstName" value="" placeholder="First name">
+                    </div>
+                    <div class="form-group">
+                        <input type="lastName" class="form-control" name="lastName" value="" placeholder="Last name">
+                    </div>
+                    <div class="form-group">
+                        <input class="passwordInput" type="password" class="form-control" name="password" value="" placeholder="Create a Password" data-ng-required="">
+                    </div>
+                    <div class="flex-container mb-3">
+                        <label for=""><input type="checkbox" value="remember-me">  Remember me</label>
+                        <a href="#">Show password</a>
+                    </div>
+                    <h5>Birthday</h5>
+                    <p>To sign up, you must be 18 or older. Other people won't see your birthday.</p>
+                    <div class="input-group mb-3">
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option selected disabled>Month</option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option selected disabled>Day</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option selected disabled>Year</option>
+                            <option value="2000">2000</option>
+                            <option value="1999">1999</option>
+                        </select> 
+                        <button class="btn btn-lg btn-block rausch-bg" type="submit">Sign up</button>
+                        <p>Already have an Airbnb account? <span><a id="loginFromModal" data-toggle="modal" href="#loginModal" class="greentext">Log in</a></span></p>
+                    </div>
+                </form>              
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>

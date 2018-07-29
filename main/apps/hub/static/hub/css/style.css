@@ -8,48 +8,33 @@ body {
     color: #4a4a4a;
     padding-top: 150px;
 }
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+.inline {
+    display: inline-block;
+}
+#cover, #dashboard-cover {
+    position: absolute;
+    top: -97px;
+    z-index: 20;
+    height: 220px;
+    width: 100%;
+    background-color: #ffffff;
+}
+.greentext {
+    color: #00a699;
+}
+.rausch-bg {
+    background-color: #ff5a5f;
+}
 .navbar {
     height: 70px;
     background-color: #ffffff;
     z-index: 100;
     padding: .7rem 1rem;
     border-bottom: 1px solid #dedcdc;
-}
-.searchbar_div{
-    width: 430px;
-    height: 45px; 
-    position: relative;
-    background-color: #ffffff;
-    border-radius: 5px;
-    border: 1px solid #dedcdc;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: 3px;
-    font-size: 18px;
-    line-height: 24px;
-}
-#search_icon {
-    padding-left: 7px;
-    padding-top: 2px;
-}
-.search_input {
-    width: 100%;
-    border: 0px;
-    padding: 11px;
-    font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
-    font-size: 16px;
-    line-height: 22px;
-    color: #4a4a4a;
-    text-overflow: ellipsis;
-}
-.search_input:focus {
-    outline-width: 0;
-}
-.search_button {
-    display: none;
-}
-.flex-container {
-    display: flex;
-    justify-content: space-between;
 }
 .navbar-brand{
     width: 35px;
@@ -61,12 +46,70 @@ body {
 #arrowdown {
     color: #a3a1a1;
 }
-#search_icon img{
+.searchbar-div{
+    width: 430px;
+    height: 45px; 
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #dedcdc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 3px;
+    font-size: 18px;
+    line-height: 24px;
+}
+#search-icon {
+    padding-left: 7px;
+    padding-top: 2px;
+}
+#search-icon img{
     width: 34px;
     height: 34px;
 }
+.search-input {
+    width: 100%;
+    border: 0px;
+    padding: 11px;
+    font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
+    font-size: 16px;
+    line-height: 22px;
+    color: #4a4a4a;
+    text-overflow: ellipsis;
+}
+.search-input:focus {
+    outline-width: 0;
+}
+.search-button {
+    display: none;
+}
 a {
     color: #4a4a4a;
+}
+.filters {
+    position: fixed;
+    top: 64px;
+    z-index: 90;
+    height: 65px;
+    width: 100%;
+    padding: 16px 0px;
+    background-color: #ffffff;
+    /* color: #808080; */
+    color: #484848;
+    border-bottom: 1px solid #dedcdc;
+}
+filters a {
+    line-height: 18px;
+    letter-spacing: -0.2px;
+    font-family: Circular, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    color: #484848;
+}
+.nav-pills .nav-link.active {
+    background-color: #00a699;
+} 
+.indvFilter {
+    margin: 0px 10px;
+    display: inline-block !important;
+    vertical-align: top !important;
 }
 .top_destinations {
     padding: 5px 0px;
@@ -102,7 +145,7 @@ a {
     background-color: #2c6add;
 }
 .card-text span {
-    color: #008489;
+    color: #00a699;
 }
 .card-title {
     color: #a02f18;
@@ -111,42 +154,6 @@ a {
 .card-title span{
     color: #a02f18;
     font-weight: lighter;
-}
-#cover {
-    position: absolute;
-    top: -97px;
-    z-index: 20;
-    height: 220px;
-    width: 100%;
-    background-color: #ffffff;
-}
-.filters {
-    position: fixed;
-    top: 64px;
-    z-index: 90;
-    height: 65px;
-    width: 100%;
-    padding: 16px 0px;
-    background-color: #ffffff;
-    color: #808080;
-    border-bottom: 1px solid #dedcdc;
-}
-filters a {
-    line-height: 18px;
-    letter-spacing: -0.2px;
-    font-family: Circular, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
-    color: #484848;
-}
-.nav-pills .nav-link.active {
-    background-color: #008489;
-} 
-.indvFilter {
-    margin: 0px 10px;
-    display: inline-block !important;
-    vertical-align: top !important;
-}
-.inline {
-    display: inline-block;
 }
 .top_card{ 
     display: inline-block;
@@ -161,9 +168,8 @@ p.top_card {
     top: 13px;
     color: #736f6f;
     text-shadow: 3px 1px 1px #f6f1f169;
-}
 
-/*  Move to login HTML */
+/*  Modals */
 #loginModal .form-control, #registerModal .form-control {
 border: 1px solid #a8a7a7;
 }
@@ -177,4 +183,4 @@ border: 1px solid #a8a7a7;
 #loginModal p, #registerModal .btn-primary  {
     margin-top: 20px;
 }
- /*  Move to login HTML */
+ /*  Modals */

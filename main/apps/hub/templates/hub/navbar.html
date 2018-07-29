@@ -1,0 +1,26 @@
+
+<nav class="navbar flex-container navbar-expand-lg fixed-top">
+    <div>
+        <div class="inline">
+            <a class="navbar-brand inline" href="#">
+                <img src="{% static 'images/airbnb-logo.png' %}" alt="brand-logo">
+                <div class="d-inline d-sm-inline d-lg-none"><i id="arrowdown" class="fas fa-angle-down"></i></div>
+            </a>
+        </div>
+        <div class="inline">
+            {% include 'hub/searchbar.html' %}
+        </div>
+    </div>
+    <div>
+        <div class="collapse navbar-collapse"> 
+            <a class="nav-link" href="#">Become a host</a>
+            <a class="nav-link getModal" data-toggle="modal" href="#registerModal">Sign Up</a>
+            <a class="nav-link getModal" data-toggle="modal" href="#loginModal">Log in</a>
+        </div> 
+    </div>
+</nav>
+
+{% include 'hub/registrationModal.html' %}
+
+{% include 'hub/loginModal.html' %}
+

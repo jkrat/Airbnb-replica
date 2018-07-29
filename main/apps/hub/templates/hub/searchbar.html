@@ -1,0 +1,11 @@
+
+<form class="form-inline mx-3" action="">
+    {% csrf_token %}
+    <div class="searchbar-div d-flex">
+        <div id="search-icon" class="inline">
+            <img src="{% static 'images/search_icon.png' %}" alt="search-icon">     
+        </div>
+        <input class="search-input controls" type="text" name="search-location" value="" placeholder="Destination, City, Address">
+        <button class="btn search-button" type="submit"></button>
+    </div>
+</form>
