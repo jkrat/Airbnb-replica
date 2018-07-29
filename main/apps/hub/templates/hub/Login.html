@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 100px;
+        }
+        .main {
+            width: 400px;
+            border: 1px solid rgb(155, 154, 154);
+            padding: 55px 10px;
+            margin: 80px auto;
+            border-radius: 5px;
+        }
+        .form-control {
+            border: 1px solid rgb(168, 167, 167);
+        }
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        button {
+            margin-bottom: 10px;
+        }
+        p {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body class="text-center">
+        <div class='main'>    
+            <form class="form-signin" action="" method="POST">
+                <h1 class="h3 mb-3 font-weight-normal"></h1>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="" value="" placeholder="Email Address">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="" value="" placeholder="Password" data-ng-required="">
+                </div>
+                <div class="flex-container mb-3">
+                    <label for=""><input type="checkbox" value="remember-me">  Remember me</label>
+                    <a href="">Show password</a>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+                <a class="pass" href="">Forgot password?</a>
+                <p>Don't have an account? <span><a href="">Sing in</a></span></p>
+            </form>               
+        </div>
+</body>
+</html>

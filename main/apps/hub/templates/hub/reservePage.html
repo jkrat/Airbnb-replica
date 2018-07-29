@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <style>
         * {
@@ -75,8 +75,18 @@
             width: 34px;
             height: 34px;
         }
-        a {
-            color: #4a4a4a;
+        #small-window-search {
+            border: none;
+            width: 100%;
+            text-align: left;
+        }
+        #small-window-search span {
+            color: #8c8989;
+            font-size: 16px;
+            font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
+        }
+        .small-search-button-div {
+            margin-left: 15px;
         }
         .top_destinations {
             padding: 5px 0px;
@@ -172,6 +182,9 @@
             color: #736f6f;
             text-shadow: 3px 1px 1px #f6f1f169;
         }
+        @media (min-width: 744px)
+            .a {
+            }
 
         /*  Move to login HTML */
         #loginModal .form-control, #registerModal .form-control {
@@ -204,23 +217,23 @@
                     <div class="d-inline d-sm-inline d-lg-none"><i id="arrowdown" class="fas fa-angle-down"></i></div>
                 </a>
             </div>
-            <div class="inline">
-                <form class="form-inline mx-3" action="">
-                    <div class="searchbar_div d-flex">
-                        <div id="search_icon" class="inline">
-                            <img src="../static/images/search_icon.png" alt="">     
-                        </div>
-                            <input class="search_input" id="search_id" class="controls" type="text" name="html_loc" value="" placeholder="Destination, City, Address">
-                            <button class="btn search_button" type="submit">Search</button>
-                        </div>
-                    </div>
-                </form>
+
+
+
+            <div class="inline small-search-button-div">
+                <div class="searchbar_div d-flex">
+                    <button id="small-window-search" aria-label="Open search" type="button" class="">
+                        <span id="search_icon" class="inline"><img src="../static/images/search_icon.png" alt=""></span>
+                        <span id="search_icon" class="inline">Anywhere &#x02022; Homes</span>
+                    </button>    
+                </div>
             </div>
         </div>
+
+
+
+
         <div>
-            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button> -->
             <div class="collapse navbar-collapse"> 
                 <a class="nav-link" href="#">Become a host</a>
                 <a class="nav-link getModal" data-toggle="modal" href="#registerModal">Sign Up</a>
@@ -670,9 +683,11 @@
     </div>
 
 
-    <script src="jquery-3.3.1.min.js"></script>
-    <script src="bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- <script scr="../static/js/modernizr-mg.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 <script>
     // hides current modal when switching between the two
     $("#signinFromModal").click(function () {
