@@ -26,9 +26,6 @@ body {
 .greentext {
     color: #00a699;
 }
-.rausch-bg {
-    background-color: #ff5a5f;
-}
 .navbar {
     height: 70px;
     background-color: #ffffff;
@@ -162,14 +159,20 @@ filters a {
 p.top-card {
     width: 100px;
 }
-#like {
+#like { 
     position: absolute;
     right: 13px;
     top: 13px;
     color: #736f6f;
     text-shadow: 3px 1px 1px #f6f1f169;
-
+}
+.getModal:focus {
+    outline-width: 0;
+}
 /*  Modals */
+#loginModal {
+    color: #4a4a4a;
+}
 #loginModal .form-control, #registerModal .form-control {
 border: 1px solid #a8a7a7;
 }
@@ -177,10 +180,12 @@ border: 1px solid #a8a7a7;
     display: flex;
     justify-content: space-between;
 }
-#loginModal button, #registerModal button {
+.rausch-bg {
     margin-bottom: 10px;
+    color: #ffffff;
+    background-color: #ff5a5f;
 }
-#loginModal p, #registerModal .btn-primary  {
+#loginModal p, .register-button {
     margin-top: 20px;
 }
  /*  Modals */

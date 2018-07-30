@@ -1,4 +1,4 @@
 from django.shortcuts import render, redirect
 
-def listing(request):
-    return redirect("home/")
+def newListing(request):
+    return redirect("hub:home") 

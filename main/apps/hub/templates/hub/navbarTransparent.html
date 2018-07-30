@@ -1,19 +1,17 @@
 {% load static %}
-<nav class="navbar flex-container navbar-expand-lg fixed-top">
+
+<nav class="navbar flex-container navbar-expand-md fixed-top"> 
     <div>
         <div class="inline">
-            <a class="navbar-brand inline" href="#"> 
-                <img src="{% static 'hub/images/airbnb-logo.png' %}" alt="brand-logo">
+            <a class="navbar-brand inline" href="{% url 'hub:home' %}">
+                <img src="{% static 'hub/images/airbnb-logo.png' %}" alt="">
                 <div class="d-inline d-sm-inline d-lg-none"><i id="arrowdown" class="fas fa-angle-down"></i></div>
             </a>
         </div>
-        <div class="inline">
-            {% include './searchbar.html' %}
-        </div>
     </div>
     <div>
-        <div class="collapse navbar-collapse"> 
-            <a class="nav-link" href="#">Become a host</a>
+        <div class="collapse landing navbar-collapse"> 
+            <a class="nav-link" href="{% url 'listing:newListing' %}">Become a host</a>
             <a class="nav-link getModal" data-toggle="modal" href="#registerModal">Sign Up</a>
             <a class="nav-link getModal" data-toggle="modal" href="#loginModal">Log in</a>
         </div> 
@@ -23,4 +21,3 @@
 {% include 'hub/registrationModal.html' %}
 
 {% include 'hub/loginModal.html' %}
-

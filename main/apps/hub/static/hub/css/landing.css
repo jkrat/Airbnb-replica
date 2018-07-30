@@ -1,0 +1,122 @@
+
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #ffffff;
+    padding-top:290px;
+    background-image: url('../images/vn1.jpg');
+    /* background-image: url("../images/logar1.jpg"); */
+    /* background-image: url("../images/mb.jpg"); */ 
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+.navbar {
+    height: 70px;
+    background: transparent;  
+    z-index: 100;
+}
+.searchbar_div{
+    width: 100%;
+    height: 45px; 
+    position: relative;
+    background: transparent;
+    padding: 3px;
+    font-size: 18px;
+    line-height: 24px;
+    background-color: #ffffff;
+}
+#search_icon {
+    padding-left: 7px;
+    padding-top: 2px;
+}
+.search_input {
+    width: 100%;
+    border: 0px;
+    padding: 6px 12px;
+    font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
+    font-size: 22px;
+    line-height: 24px;
+    background-color: #ffffff;
+    color: #4a4a4a;
+    text-overflow: ellipsis;
+}
+.search_input:focus {
+    outline-width: 0;
+}
+.search_button {
+    display: none;
+}
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+.navbar-brand{
+    width: 35px;
+}
+.navbar-brand img{
+    width: 43px;
+    height: 43px;
+}
+#arrowdown {
+    color: #ff5a5f;
+}
+#search_icon img{
+    width: 34px;
+    height: 34px;
+}
+.inline {
+    display: inline-block;
+}
+.hero {
+    background: transparent;
+    width: 60%;
+}
+.hero-smallscreen {
+    font-size: 1rem;
+    background: transparent;
+    width: 90%;
+    margin: 0px auto;
+}
+.hero form {
+    margin-top: 1.5rem;
+    border: 1px solid #dedcdc;
+    border-radius: 5px;
+    height: 70px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+}
+a {
+    color: #ffffff;
+    font-size: 15px;
+    /* font-family: Helvetica Bold Condensed; */
+}
+.getModal:focus {
+    outline-width: 0;
+}
+#loginModal, #registerModal {
+    color: #4a4a4a;
+}
+.greentext {
+    color: #00a699;
+}
+#loginModal .form-control, #registerModal .form-control {
+border: 1px solid #a8a7a7;
+}
+#loginModal .flex-container, #registerModal .flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+.rausch-bg {
+    background-color: #ff5a5f;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+#loginModal p, .register-button {
+    margin-top: 20px;
+}
+ /*  Modals */
