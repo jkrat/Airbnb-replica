@@ -39,19 +39,38 @@ $(".indvFilter").click(function() {
     $(this).addClass("active");
 });
 
+//link cards on dashboard to listing profile. NEED to customize to listing
+$("#click").click(function() {
+    console.log("clicked card");
+    // $.ajax({
+    //     type:"GET",
+    //     url: "/listing/", 
+    //     success: funciton() {
+    //         console.log("successful ajax request")
+    //     }
+    // });
+    // return false;
+});
+
 // check screen size with Modernizr
 var checkMod = function() {
     if (Modernizr.mq('(min-width: 992px)')) {
         console.log("large");
+        $("#small-search-button-div").hide();
         return "large";
     } else if (Modernizr.mq('(min-width: 768px)')) {
         console.log("medium");
+        $("#small-search-button-div").hide();
         return "medium";
     } else if (Modernizr.mq('(min-width: 576px)')) {
         console.log("small");
+        $("#small-search-button-div").hide();
+        $("#searchbar-div").show();
         return "small";
     } else {
         console.log("extra-small");
+        $("#searchbar-div").hide();
+        $("#small-search-button-div").show();
         return "extra-small";
     }
 };

@@ -1,13 +1,22 @@
 * {
     box-sizing: border-box;
-}
+} 
 body {
     font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
     font-size: 14px;
     line-height: 1.43;
     color: #4a4a4a;
     padding-top: 150px;
+} 
+
+/* body {
+    padding-top: 80px;
 }
+.navbar {
+    border-bottom: none;
+} */
+
+
 .flex-container {
     display: flex;
     justify-content: space-between;
@@ -43,9 +52,9 @@ body {
 #arrowdown {
     color: #a3a1a1;
 }
-.searchbar-div{
+#searchbar-div{
     width: 430px;
-    height: 45px; 
+    height: 48px; 
     position: relative;
     background-color: #ffffff;
     border-radius: 5px;
@@ -54,6 +63,31 @@ body {
     padding: 3px;
     font-size: 18px;
     line-height: 24px;
+}
+.small-searchbar_div{
+    width: 335px;
+    height: 45px; 
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border-bottom: 1px solid #dedcdc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 3px;
+    font-size: 18px;
+    line-height: 24px;
+}
+#small-window-search {
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+#small-window-search span {
+    color: #8c8989;
+    font-size: 16px;
+    font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
+}
+.small-search-button-div {
+    margin-left: 15px;
 }
 #search-icon {
     padding-left: 7px;
@@ -73,7 +107,7 @@ body {
     color: #4a4a4a;
     text-overflow: ellipsis;
 }
-.search-input:focus {
+#small-window-search:focus, .search-input:focus {
     outline-width: 0;
 }
 .search-button {
@@ -129,28 +163,11 @@ filters a {
 .column-card {
     margin-bottom: 10px;
 }
+
+#stop {
+}
 .card {  
     border: none;
-
-}
-.carousel-indicators li {
-    background-color: #f5efef;
-    border-radius: 50px;
-    width: .4rem;
-}
-.carousel-indicators .active {
-    background-color: #2c6add;
-}
-/* .card-text span {
-    color: #00a699;
-} */
-.card-title {
-    color: #a02f18;
-    font-weight: bold;
-}
-.card-title span{
-    color: #a02f18;
-    font-weight: lighter;
 }
 .top-card{ 
     display: inline-block;
@@ -166,7 +183,11 @@ p.top-card {
     color: #736f6f;
     text-shadow: 3px 1px 1px #f6f1f169;
 }
-.getModal:focus {
+.column-card :hover {
+    color: inherit;
+    text-decoration: inherit;
+    }
+    .getModal:focus {
     outline-width: 0;
 }
 /*  Modals */
@@ -187,5 +208,120 @@ border: 1px solid #a8a7a7;
 }
 #loginModal p, .register-button {
     margin-top: 20px;
+
+/* User Profile */
+
 }
- /*  Modals */
+.message-column {
+    max-height: 400px;
+    overflow: auto;
+}
+#message-header{
+    margin: 0px;
+}
+.photo-header {
+    background-color: #7a7e82;
+    color: #ffffff;
+    position: relative;
+    width: 100%;
+    text-align: center;
+
+}
+#main-pic img {
+    width: 600px;
+
+}
+.view-photos {
+    position: absolute;
+    right: 13px;
+    top: 13px;
+    color: #736f6f;
+    text-shadow: 3px 1px 1px #f6f1f169;
+}
+.nav-link, .link, .nav-link:hover {
+    color: #4a4a4a;
+}
+.message, .review {
+    border: 1px solid #dedcdc;
+}
+ul {
+    list-style: none;
+    padding: 0px;
+}
+ul li {
+    margin: 5px 0px;
+}
+
+/* Listing Profile */
+
+.main i {
+    margin: 0px 12px;
+    /* color: #008489; */
+}
+.main a.link {
+    color: #008489;
+}
+ul {
+    list-style: none;
+    padding: 0px;
+}
+.hometype li p {
+    margin: 0px 0px 0px 20px;
+    font-size: .8rem;
+}
+.first-filter-title {
+    margin-top: 10px;
+}
+hr.listing {
+    margin: 2rem 0rem;
+}
+.houserules {
+    padding-bottom: 20px;
+}
+#filter-submit-footer {
+    background-color: #ffffff;
+    padding: 10px 25px;
+    border-top: 1px solid #dedcdc; ;
+}
+.end-button {
+    width: 200px;;
+    text-align: center;
+    background-color: #008489;
+    color: #ffffff;
+    padding: 12px 24px;
+    font-size: 16px;
+    line-height: 22px;
+    margin: 0px 5px 10px 0px;
+}
+.end-button:focus {
+    outline-width: 0;
+}
+.red-text {
+    color: #a02f18;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+.listing-main {
+    padding: 0px 20px;
+}
+#Listingmainpic {
+    margin-bottom: 20px;
+}
+.listing-city {
+    margin: 20px 0px;
+}
+.space {
+    margin: 20px 0px;
+}
+.space-around {
+    margin: 0px 20px;
+}
+.no-margin{
+    margin: 0px;
+}
+.hosted-by {
+    margin-top: 45px;
+}
+.map {
+    margin-bottom: 200px;
+}

@@ -9,11 +9,18 @@ def home(request):
 def login(request):
     return redirect("home")
 
+def logout(request):
+    return redirect("home")
+
 def signup(request):
     return redirect("home")
 
 def becomeHost(request):
     return redirect("home")
+
+def listing(request):
+    return render(request, "hub/ListingProfile.html")
+    # return redirect("listingProfile")
 
 
 
