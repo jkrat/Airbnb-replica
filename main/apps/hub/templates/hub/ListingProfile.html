@@ -1,7 +1,12 @@
 {% extends './base.html' %} 
 {% load static %}
 
-     
+
+    {% block navs %}
+    {{ block.super }}
+    {% endblock navs %}
+
+    
     {% block filters %} 
 
     {% endblock filters %} 
@@ -46,7 +51,7 @@
                 <p>The space</p>
                 <p>blah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blah</p>
             </div>
-            <a class="link space greentext" rel="stylesheet" href="">contact host</a>
+            <a class="getModal greentext" data-toggle="modal" href="#messageModal">contact host</a>
         </div>
         <hr class="listing">
         <div>
@@ -115,8 +120,7 @@
             <p>Joined in November 2015</p>
             <span></span>
             <p>blah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blah</p>
-            <a class="greentext" href="">contact host</a>
-
+            <a class="getModal greentext" data-toggle="modal" href="#messageModal">contact host</a>
         <hr class="listing">
         <div class="map">
             <h3>Map</h3>
@@ -134,7 +138,7 @@
 
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary end-button"> Show Homes</button>
+                <button type="button" class="btn end-button rausch-bg"> Book</button>
             </footer>
         </form> 
     </div>

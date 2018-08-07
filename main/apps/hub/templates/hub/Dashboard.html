@@ -1,7 +1,12 @@
 {% extends './base.html' %} 
 {% load static %}
 
-     
+
+    {% block navs %}
+        {{ block.super }}
+    {% endblock navs %}
+
+
     {% block filters %} 
         {{ block.super }}
     {% endblock filters %} 
@@ -13,7 +18,7 @@
     <div id="dashboard-cover"></div>
 
 <!-- top destinations -->
-    <div class="container">
+    <div class="container filterbar-margin">
         <h5 class="top-destination-header">Travel the world with Airbnb</h5>
         <div class="top-destinations">
             <div class="d-block topcity"><a href="">
@@ -41,7 +46,7 @@
         <div class="row">
             <div class="col-md-6 col-lg-4 column-card">
                 <a href="{% url 'hub:listing' %}"><div class="card">
-                    <img class="card-img-top" src="{% static 'hub/images/one.png' %}" alt="Card image cap">
+                    <img class="card-img-top" src="{% static 'hub/images/room1.jpeg' %}" alt="Card image cap">
                     <i id="like" class="far fa-heart fa-2x"></i>
                     <div class="card-body">
                         <p id="stop" class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>
@@ -73,7 +78,7 @@
             </div>
             <div class="col-md-6 col-lg-4 column-card">
                 <a href="{% url 'hub:listing' %}"><div class="card">
-                    <img class="card-img-top" src="{% static 'hub/images/one.png' %}" alt="Card image cap">
+                    <img class="card-img-top" src="{% static 'hub/images/room2.jpg' %}" alt="Card image cap">
                     <i id="like" class="far fa-heart fa-2x"></i>
                     <div class="card-body">
                         <p class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>
@@ -105,7 +110,7 @@
             </div>
             <div class="col-md-6 col-lg-4 column-card">
                 <a href="{% url 'hub:listing' %}"><div class="card">
-                    <img class="card-img-top" src="{% static 'hub/images/one.png' %}" alt="Card image cap">
+                    <img class="card-img-top" src="{% static 'hub/images/room1.jpeg' %}" alt="Card image cap">
                     <i id="like" class="far fa-heart fa-2x"></i>
                     <div class="card-body">
                         <p class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>

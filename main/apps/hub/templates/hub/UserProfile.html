@@ -1,0 +1,100 @@
+{% extends './base.html' %} 
+{% load static %}
+
+
+    {% block navs %}
+        {{ block.super }}
+    {% endblock navs %} 
+
+     
+    {% block filters %} 
+     
+    {% endblock filters %} 
+
+    
+    {% block body %} 
+
+    <div class="user-profile-main container">
+        <div class="row">
+            <div class="col-sm-12 col-md-3 container">
+                <div class="user-card">
+                    <div class="container card-header">
+                    <img id="user-card-img-top" src="{% static 'hub/images/unknow.png' %}" alt="Card image cap">
+                    <div class="photo-header"><i class="fas fa-camera"></i> Add Profile Photo</div>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><p id="name"class="display-4">James</p></li>
+                            <li><a href="{% url 'hub:listing' %}" class="link">Your Porperty</a></li>
+                            <li><a href="{% url 'hub:profile' %}" class="link">Edit Profile</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="user-card">
+                    <div class="card-header">Quick Links</div>
+                    <div class="card-body">
+                        <ul>
+                            <li><a href="{% url 'hub:profile' %}" class="link">View Trips</a></li>
+                            <li><a href="{% url 'hub:profile' %}" class="link">Saved Trips</a></li>
+                            <li><a href="{% url 'hub:becomeHost' %}" class="link">Become a Host</a></li>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-0 col-md-9 container">
+                <div class="message-header">
+                    <div class="card-header">
+                        Messages (0 new)
+                    </div>
+                </div>
+                <div class="user-card message-column">
+                    <div class="card-body message">
+                        <p>From: name <span>On: date</span></p>
+                        <p>message...</p>
+                    </div>
+                    <div class="card-body message">
+                        <p>From: name <span>On: date</span></p>
+                        <p>message...</p>
+                    </div>
+                    <div class="card-body message">
+                        <p>From: name <span>On: date</span></p>
+                        <p>message...</p>
+                    </div>
+                </div>
+                <div class="message-header">
+                    <div class="card-header">
+                        Reviews (0 new)
+                    </div>
+                </div>
+                <div class="user-card message-column">
+                    <div class="card-body review">
+                        <p>From: name <span>On: date</span></p>
+                        <p>message...</p>
+                    </div>
+                    <div class="card-body review">
+                        <p>From: name <span>On: date</span></p>
+                        <p>message...</p>
+                    </div>
+                    <div class="card-body review">
+                        <p>From: name <span>On: date</span></p>
+                        <p>message...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   
+    {% endblock body %}
+
+
+    {% block scripts %}
+
+    {% endblock scripts %}
+
+
+
+    
+
+

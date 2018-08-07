@@ -12,11 +12,4 @@
         </div>
     </form>
 
-    <div id="small-search-button-div" class="inline small-search-button-div hide">
-        <div class="small-searchbar_div d-flex">
-            <button id="small-window-search" aria-label="Open search" type="button" class="">
-                <span id="search-icon" class="inline"><img src="{% static 'hub/images/search_icon.png' %}" alt=""></span>
-                <span id="search-icon" class="inline">Anywhere &#x02022; Homes</span>
-            </button>    
-        </div>
-    </div>
+    {% include './small-screensearchbar.html' %} 

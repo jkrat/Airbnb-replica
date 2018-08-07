@@ -37,16 +37,45 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     <script>
 
+// hides current modal when switching between the two
+$("#signinFromModal").click(function () {
+    $("#loginModal").modal("hide");
+});
+
+$("#loginFromModal").click(function () {
+    $("#registerModal").modal("hide");
+});
+
+// toggle show password for both login and register modal
+var passwordVisible = false;
+$(".getModal").click(function() {
+    passwordVisible = false;
+});
+
+$(".showpassword").click(function( event ) {
+    event.preventDefault();
+    if (passwordVisible) {
+        $(".passwordInput").attr("type","password");
+        $(".showpassword").text("Show password")
+        passwordVisible = !passwordVisible;
+    } else {
+        $(".passwordInput").attr("type","text");
+        $(".showpassword").text("Hide password")
+        passwordVisible = !passwordVisible;
+    }
+});
     // check screen size with Modernizr
 var checkMod = function() {
     if (Modernizr.mq('(min-width: 992px)')) {
         console.log("large");
+        $( "#logo-route" ).attr("href", "/home/");
         return "large";
     } else if (Modernizr.mq('(min-width: 768px)')) {
         $( ".hero-smallscreen" ).attr("class" , "hero container ");
         $( "#ine" ).text("Book unique homes and");
         $( "#two" ).text("experiences all over the world.");
         $( ".hero-smallscreen span").html( "<h1>Hello <b>Again</b></span>" );
+        $( "#logo-route" ).attr("href", "/menu/");
         console.log("medium");
         return "medium";
     } else if (Modernizr.mq('(min-width: 576px)')) {

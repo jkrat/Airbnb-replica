@@ -7,13 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{% static 'hub/libraries/bootstrap.min.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'hub/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'hub/css/style.css' %}">
     <title>Airbnb</title>
     
-</head>
+</head> 
 <body>
     
+    {% block navs %}
     {% include './navbar.html' %} 
+    {% endblock navs %}
+    
 
     {% block filters %}
     {% include './filtersnavbar.html' %}

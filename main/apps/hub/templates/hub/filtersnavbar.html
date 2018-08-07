@@ -11,10 +11,10 @@
                 <button id="price" class="nav-link nav-item indvFilter">Price</button>
             </div>
             <div class="d-none d-md-block">
-                <button id="more-filters" class="nav-link nav-item indvFilter">More Filters</button>
+                <button id="more-filters" class="nav-link nav-item indvFilter" href="{% url 'hub:filters' %}">More Filters</button>
             </div>
             <div class="d-sm-block d-md-none">
-                <button id="small-more-filters" class="nav-link nav-item indvFilter">Filters</button>
+                <button id="small-more-filters" class="nav-link nav-item indvFilter"><a href="{% url 'hub:filters' %}">Filters</a></button>
             </div>
         </nav>
     </div>

@@ -39,6 +39,10 @@ $(".indvFilter").click(function() {
     $(this).addClass("active");
 });
 
+
+
+
+
 //link cards on dashboard to listing profile. NEED to customize to listing
 $("#click").click(function() {
     console.log("clicked card");
@@ -57,10 +61,12 @@ var checkMod = function() {
     if (Modernizr.mq('(min-width: 992px)')) {
         console.log("large");
         $("#small-search-button-div").hide();
+        $( "#logo-route" ).attr("href", "/home/");
         return "large";
     } else if (Modernizr.mq('(min-width: 768px)')) {
         console.log("medium");
         $("#small-search-button-div").hide();
+        $( "#logo-route" ).attr("href", "/menu/");
         return "medium";
     } else if (Modernizr.mq('(min-width: 576px)')) {
         console.log("small");

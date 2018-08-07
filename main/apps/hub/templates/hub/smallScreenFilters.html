@@ -1,103 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
-            font-size: 16px;
-            line-height: 1.43;
-            color: #4a4a4a;
-            padding-top: 90px;
-        }
-       .navbar {
-            height: 55px;
-            background-color: #ffffff;
-            z-index: 100;
-            padding: 18px 18px 0px 18px;
-            border-bottom: 1px solid #dedcdc; 
-        }
-        .flex-container {
-            display: flex;
-            justify-content: space-between;
-        }
-        .inline {
-            display: inline-block;
-        }
-        .navbar-brand{
-            width: 35px;
-            color: #808080;
-        }
-        .navbar a {
-            color:  #008489;
-        }
-        .navbar a i {
-            color:  #4a4a4a;
-        }
-        .main {
-            margin: 0px 25px;
-        }
-        .main label {
-            margin: 0px 0px 0px 4px;
-            font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
-        }
-        .main i {
-            margin: 0px 12px;
-            color: #008489;
-        }
-        .main a.link {
-            color: #008489;
-        }
-        ul {
-            list-style: none;
-            padding: 0px;
-        }
-        .hometype li p {
-            margin: 0px 0px 0px 20px;
-            font-size: .8rem;
-        }
-        .first-filter-title {
-            margin-top: 10px;
-        }
-        hr {
-            margin: 3rem 0rem;
-        }
-        .houserules {
-            padding-bottom: 20px;
-        }
-        #filter-submit-footer {
-            /* position: fixed;
-            bottom: 0px; */
-            padding: 10px 25px;
-            border-top: 1px solid #dedcdc; ;
-        }
-        #filter-submit-footer button {
-            width: 100%;
-            text-align: center;
-            background-color: #008489;
-            color: #ffffff;
-            padding: 12px 24px;
-            font-size: 16px;
-            line-height: 22px;
-        }
-        #filter-submit-footer button:focus {
-            outline-width: 0;
-        }
+{% extends './base.html' %} 
+{% load static %}
 
-    </style>
-</head>
-<body>
-    <nav class="navbar flex-container fixed-top">
+
+    {% block navs %}
+
+    <nav id="small-search-nav" class="navbar flex-container fixed-top">
         <div>
-            <a class="navbar-brand inline" href="#">
+            <a class="small-search-navbar-brand inline" href="#">
                 <i class="fas fa-times"></i>
             </a>
         </div>
@@ -106,7 +15,18 @@
         </div>
     </nav>
 
-    <div class="main">
+       
+    {% endblock navs %}
+
+     
+    {% block filters %} 
+     
+    {% endblock filters %} 
+
+
+    {% block body %} 
+
+    <div id="small-filters-main" class="main">
         <form action="">
             <div class="hometype">
                 <p class="first-filter-title">Home Type</p>
@@ -130,7 +50,7 @@
                     </ul>
                 </div>
             </div>
-            <hr>
+            <hr class="small-screen">
             <div class="roomtype">
                 <p>Rooms and beds</p>
                 <ul>
@@ -148,7 +68,7 @@
                     </li>
                 </ul>
             </div>
-            <hr>
+            <hr class="small-screen">
             <div class="amenities">
             <div class="flex-container">
                 <p>Amenities</p>
@@ -156,12 +76,12 @@
             </div>
             <div class="collapse" id="amenity-options">
             <ul>
-                <li></li><input type="checkbox"><label for="">Kitchen</label></li>
-                <li></li><input type="checkbox"><label for="">Heating</label></li>
+                <li></li><input type="checkbox"><label for=""></label> Kitchen</li>
+                <li></li><input type="checkbox"><label for=""></label> Heating</li>
             </ul>
         </div>
             </div>
-            <hr>
+            <hr class="small-screen">
             <div class="facilities">
             <div class="flex-container">
                 <p>Facilities</p>
@@ -169,14 +89,14 @@
             </div>
                 <div class="collapse" id="facility-options">
             <ul>
-                <li><input type="checkbox"><label for="">Free parking on premises</label></li>
-                <li><input type="checkbox"><label for=""></label>Gym</li>
-                <li><input type="checkbox"><label for=""></label>Hot Tum</li>
-                <li><input type="checkbox"><label for=""></label>Pool</li>
+                <li><input type="checkbox"><label for=""></label> Gym</li>
+                <li><input type="checkbox"><label for=""></label> Free parking on premises</li>
+                <li><input type="checkbox"><label for=""></label> Hot Tum</li>
+                <li><input type="checkbox"><label for=""></label> Pool</li>
             </ul>
             </div>
             </div>
-            <hr>
+            <hr class="small-screen">
             <div class="proptype">
             <div class="flex-container">
                 <p>Property type</p>
@@ -192,7 +112,7 @@
             </ul>
             </div>
             </div>
-            <hr>
+            <hr class="small-screen">
             <div class="houserules">
                 <p>House Rules</p>
                 <div>
@@ -204,104 +124,15 @@
                 </div>
             </div>
             <div id="filter-submit-footer">
-                <button type="button" class="btn btn-block"> Show Homes</button>
+                <button type="button" class="btn btn-block" href="{% url 'hub:filterResults' %}"> Show Homes</button>
             </div>
         </form> 
     </div>
 
 
-
-    
-
+    {% endblock body %}
 
 
-            
+    {% block scripts %}
 
-
-
-    
-
-
-
-    
-
-
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<!-- <script scr="../static/js/modernizr-mg.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-<script>
-    // hides current modal when switching between the two
-    $("#signinFromModal").click(function () {
-	    $("#loginModal").modal("hide");
-    });
-
-    $("#loginFromModal").click(function () {
-	    $("#registerModal").modal("hide");
-    });
-
-    // toggle show password for both login and register modal
-    var passwordVisible = false;
-    $(".getModal").click(function() {
-        passwordVisible = false;
-    });
-
-    $(".showpassword").click(function( event ) {
-        event.preventDefault();
-        if (passwordVisible) {
-            $(".passwordInput").attr("type","password");
-            $(".showpassword").text("Show password")
-            passwordVisible = !passwordVisible;
-        } else {
-            $(".passwordInput").attr("type","text");
-            $(".showpassword").text("Hide password")
-            passwordVisible = !passwordVisible;
-        }
-    });
-
-    // change heart for like, needs toggle
-    $("#like").click(function() {
-        console.log("like");
-        $(this).attr("class", "fas fa-heart fa-3x");
-    });
-
-    //toggle nav pills to active
-    $(".indvFilter").click(function() {
-        console.log("filter");
-        $(this).addClass("active");
-    });
-    
-    // check screen size with Modernizr
-    var checkMod = function() {
-        if (Modernizr.mq('(min-width: 992px)')) {
-            console.log("large");
-            return "large";
-        } else if (Modernizr.mq('(min-width: 768px)')) {
-            console.log("medium");
-            return "medium";
-        } else if (Modernizr.mq('(min-width: 576px)')) {
-            console.log("small");
-            return "small";
-        } else {
-            console.log("extra-small");
-            return "extra-small";
-        }
-    };
-   
-    $(function() {
-        $(window).resize(checkMod);
-        checkMod();
-    });
-
-    // 
-
-
-    
-
-
-
-</script>
-    
-</body>
-</html>
+    {% endblock scripts %}

@@ -1,175 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
-    {% load static %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
-            font-size: 16px;
-            line-height: 1.43;
-            color: #4a4a4a;
-            padding-top: 90px;
-        }
-       .navbar {
-            height: 70px;
-            background-color: #ffffff;  
-            z-index: 100;
-            padding: .7rem 1rem;
-        }
-        .searchbar_div{
-            width: 430px;
-            height: 45px; 
-            position: relative;
-            background-color: #ffffff;
-            border-radius: 5px;
-            border: 1px solid #dedcdc;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 3px;
-            font-size: 18px;
-            line-height: 24px;
-        }
-        #search_icon {
-            padding-left: 7px;
-            padding-top: 2px;
-        }
-        .search_input {
-            width: 100%;
-            border: 0px;
-            padding: 11px;
-            font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
-            font-size: 16px;
-            line-height: 22px;
-            color: #4a4a4a;
-            text-overflow: ellipsis;
-        }
-        .search_input:focus {
-            outline-width: 0;
-        }
-        .search_button {
-            display: none;
-        }
-        .flex-container {
-            display: flex;
-            justify-content: space-between;
-        }
-        .navbar-brand{
-            width: 35px;
-        }
-        .navbar-brand img{
-            width: 43px;
-            height: 43px;
-        }
-        #arrowdown {
-            color: #a3a1a1;
-        }
-        #search_icon img{
-            width: 34px;
-            height: 34px;
-        }
-        
-        .inline {
-            display: inline-block;
-        }
+{% extends './base.html' %} 
+{% load static %}
 
 
-        /*  Move to login HTML */
-        #loginModal .form-control, #registerModal .form-control {
-        border: 1px solid #a8a7a7;
-        }
-        #loginModal .flex-container, #registerModal .flex-container {
-            display: flex;
-            justify-content: space-between;
-        }
-        #loginModal button, #registerModal button {
-            margin-bottom: 10px;
-        }
-        #loginModal p, #registerModal .btn-primary  {
-            margin-top: 20px;
-        }
-         /*  Move to login HTML */
+    {% block navs %}
+    {% include './small-screen-navbar.html' %} 
+    {% endblock navs %}
 
-     
-        .main {
-            margin: 0px 25px;
-            font-family: Circular,BlinkMacSystemFont,-apple-system,Roboto,Helvetical,sans-serif;
-        }
-        .main i {
-            margin: 0px 15px;
-            color: #008489;
-        }
-        .main a {
-            /* color: #008489; */
-            color: #4a4a4a;
-        }
-        ul {
-            list-style: none;
-            padding: 0px;
-        }
-        .main li {
-            margin: 20px 0px;
-        }
-        .home-link {
-            margin-top: 20px;
-        }
-        hr {
-            margin: 3rem 0rem;
-        }
+    
+    {% block filters %} 
+    
+    {% endblock filters %} 
 
 
+    {% block body %} 
 
-
-
-    </style>
-</head>
-<body>
-    <nav class="navbar flex-container navbar-expand-lg fixed-top">
-        <div>
-            <div class="inline">
-                <a class="navbar-brand inline" href="#">
-                    <img src="{% static 'hub/images/airbnb-logo.png' %}" alt="">
-                    <div class="d-inline d-sm-inline d-lg-none"><i id="arrowdown" class="fas fa-angle-down"></i></div>
-                </a>
-            </div>
-            <div class="inline">
-                <form class="form-inline mx-3" action="">
-                    <div class="searchbar_div d-flex">
-                        <div id="search_icon" class="inline">
-                            <img src="{% static 'hub/images/search_icon.png' %}" alt="">     
-                        </div>
-                            <input class="search_input" id="search_id" class="controls" type="text" name="html_loc" value="" placeholder="Destination, City, Address">
-                            <button class="btn search_button" type="submit">Search</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div>
-            <div class="collapse navbar-collapse"> 
-                <a class="nav-link" href="#">Become a host</a>
-                <a class="nav-link getModal" data-toggle="modal" href="#registerModal">Sign Up</a>
-                <a class="nav-link getModal" data-toggle="modal" href="#loginModal">Log in</a>
-            </div> 
-        </div>
-    </nav>
-
-    <div class="main">
-        <div class="home-link">
-            <a href=""><div>Home</div></a>
+    <div id="icon-menu-margin" class="menu">
+        <div >
+            <a class="menu-home-link" href="{% url 'hub:home' %}"><div>Home</div></a>
         </div>
         <hr>
         <div class="roomtype">
             <ul>
                 <li>
-                    <a href="">
+                    <a href="{% url 'hub:profile' %}">
                         <div class="flex-container">
                             <span>Profile</span>
                             <i class="fas fa-user-circle fa-lg"></i>
@@ -177,7 +30,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="{% url 'hub:profile' %}">
                         <div class="flex-container">
                             <span>Trips</span>
                             <i class="fas fa-suitcase fa-lg"></i>
@@ -185,7 +38,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="{% url 'hub:profile' %}">
                         <div class="flex-container">
                             <span>Messages</span>
                             <i class="far fa-envelope fa-lg"></i>
@@ -193,7 +46,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="{% url 'hub:profile' %}">
                         <div class="flex-container">
                             <span>Favorites</span>
                             <i class="far fa-heart fa-lg"></i>
@@ -201,7 +54,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="{% url 'hub:becomeHost' %}">
                         <div class="flex-container">
                             <span>Become a Host</span>
                             <i class="fas fa-home fa-lg"></i>
@@ -213,89 +66,16 @@
         <hr>
         <div>
             <ul>
-                <li><a href=""><div>Logout</div></a></li>
+                <li><a href="{% url 'hub:logout' %}"><div>Logout</div></a></li>
             </ul>      
         </div>
         <hr>
     </div>
 
+    {% endblock body %}
 
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<!-- <script scr="../static/js/modernizr-mg.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-<script>
-    // hides current modal when switching between the two
-    $("#signinFromModal").click(function () {
-	    $("#loginModal").modal("hide");
-    });
 
-    $("#loginFromModal").click(function () {
-	    $("#registerModal").modal("hide");
-    });
-
-    // toggle show password for both login and register modal
-    var passwordVisible = false;
-    $(".getModal").click(function() {
-        passwordVisible = false;
-    });
-
-    $(".showpassword").click(function( event ) {
-        event.preventDefault();
-        if (passwordVisible) {
-            $(".passwordInput").attr("type","password");
-            $(".showpassword").text("Show password")
-            passwordVisible = !passwordVisible;
-        } else {
-            $(".passwordInput").attr("type","text");
-            $(".showpassword").text("Hide password")
-            passwordVisible = !passwordVisible;
-        }
-    });
-
-    // change heart for like, needs toggle
-    $("#like").click(function() {
-        console.log("like");
-        $(this).attr("class", "fas fa-heart fa-3x");
-    });
-
-    //toggle nav pills to active
-    $(".indvFilter").click(function() {
-        console.log("filter");
-        $(this).addClass("active");
-    });
+    {% block scripts %}
     
-    // check screen size with Modernizr
-    var checkMod = function() {
-        if (Modernizr.mq('(min-width: 992px)')) {
-            console.log("large");
-            return "large";
-        } else if (Modernizr.mq('(min-width: 768px)')) {
-            console.log("medium");
-            return "medium";
-        } else if (Modernizr.mq('(min-width: 576px)')) {
-            console.log("small");
-            return "small";
-        } else {
-            console.log("extra-small");
-            return "extra-small";
-        }
-    };
-   
-    $(function() {
-        $(window).resize(checkMod);
-        checkMod();
-    });
-
-    // 
-
-
+    {% endblock scripts %}
     
-
-
-
-</script>
-    
-</body>
-</html>
