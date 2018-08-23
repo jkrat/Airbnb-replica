@@ -19,12 +19,14 @@
             <div class="col-sm-12 col-md-3 container">
                 <div class="user-card">
                     <div class="container card-header">
-                    <img id="user-card-img-top" src="{% static 'hub/images/unknow.png' %}" alt="Card image cap">
-                    <div class="photo-header"><i class="fas fa-camera"></i> Add Profile Photo</div>
+                        <img id="user-card-img-top" src="{{user.image.url}}" alt="Card image cap">
                     </div>
                     <div class="card-body">
                         <ul>
-                            <li><p id="name"class="display-4">James</p></li>
+                            <li><button type="button" class="btn btn-sm btn-light" data-toggle="modal" data-target="#userPicModal">
+                                    add Profile Photo
+                                  </button></li>
+                            <li><p id="name"class="display-4">{{ request.session.data.firstName }}</p></li>
                             <li><a href="{% url 'hub:listing' %}" class="link">Your Porperty</a></li>
                             <li><a href="{% url 'hub:profile' %}" class="link">Edit Profile</a></li>
                         </ul>
@@ -83,7 +85,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>›
+
+
+    {% include 'hub/userPictureModal.html' %}
     
    
     {% endblock body %}

@@ -13,9 +13,10 @@
     </div>
     <div>
         <div class="collapse navbar-collapse"> 
-            <a class="nav-link" href="{% url 'hub:becomeHost' %}">Become a host</a>
+            <a class="nav-link" href="{% url 'hub:profile' %}">{{ request.session.data.firstName }}</a>
+            <a class="nav-link" href="{% url 'user:logout' %}">Log out</a>
             <a class="nav-link getModal" data-toggle="modal" href="#registerModal">Sign Up</a>
-            <a class="nav-link getModal" data-toggle="modal" href="#loginModal">Log in</a>
+            <a class="nav-link getModal " data-toggle="modal" href="#loginModal">Log in</a>
         </div> 
     </div>
 </nav> 

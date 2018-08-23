@@ -467,3 +467,7 @@ hr.small-screen {
 #filter-submit-footer button:focus {
     outline-width: 0;
 }
+
+.hide {
+    display: none;
+}      

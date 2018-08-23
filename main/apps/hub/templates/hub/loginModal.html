@@ -9,14 +9,14 @@
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <form class="form" action="" method="POST"> 
+                    <form class="form" action="{% url 'user:login' %}" method="POST"> 
                         {% csrf_token %}
                         <h1 class="h3 mb-3 font-weight-normal"></h1>
                         <div class="form-group">
-                            <input type="email" class="form-control" name="email" value="" placeholder="Email Address">
+                            <input type="email" class="form-control" name="loginEmail" value="" placeholder="Email Address">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="passwordInput form-control" name="password" value="" placeholder="Password" data-ng-required="">
+                            <input type="password" class="passwordInput form-control" name="loginPassword" value="" placeholder="Password" data-ng-required="">
                         </div>
                         <div class="flex-container mb-3">
                             <label for=""><input type="checkbox" value="remember-me">  Remember me</label>
