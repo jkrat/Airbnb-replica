@@ -9,31 +9,19 @@
                 </button>
             </div>
             <div class="modal-body text-center">
-                <form class="form-signin needs-validation" action="{% url 'user:register' %}" method="POST" novalidate>
+                <form class="form-signin" id="register-modal-form" action="{% url 'user:register' %}" method="POST">
                     {% csrf_token %}
-                    <div class="form-group">
-                        <input type="email" class="form-control" name="email" value="" placeholder="Email address" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid email.
-                          </div>
+                    <div id="regEmailmessage" class="form-group">
+                        <input type="email" id="regEmail" class="form-control" name="email" placeholder="Email address">
                     </div>
-                    <div class="form-group">
-                        <input type="firstName" class="form-control" name="firstName" value="" placeholder="First name" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid email.
-                          </div>
+                    <div id="regfirstNamemessage" class="form-group">
+                        <input type="firstName" id="regfirstName" class="form-control" name="firstName" placeholder="First name">
                     </div>
-                    <div class="form-group">
-                        <input type="lastName" class="form-control" name="lastName" value="" placeholder="Last name" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid email.
-                          </div>
+                    <div id="reglastNamemessage" class="form-group">
+                        <input type="lastName" id="reglastName" class="form-control" name="lastName" placeholder="Last name">
                     </div>
-                    <div class="form-group">
-                        <input type="password" class="passwordInput form-control" name="password" value="" placeholder="Create a Password" data-ng-required="" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid email.
-                          </div>
+                    <div id="regPasswordmessage" class="form-group">
+                        <input type="password" id="regPassword" class="passwordInput form-control" name="password" placeholder="Create a Password">
                     </div>
                     <div class="flex-container mb-3">
                         <label for=""><input type="checkbox" value="remember-me">  Remember me</label>
@@ -61,7 +49,6 @@
                             <option selected disabled>Day</option>
                             {% for i in "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" %}
                             <option value="2">{{ forloop.counter }}</option>
-                                    {{ forloop.counter0 }}
                             {% endfor %}
                         </select>
                         <select class="custom-select" id="inputGroupSelect03">
@@ -130,27 +117,6 @@
 </div>
 
 
-
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function() {
-      'use strict';
-      window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('needs-validation');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-          form.addEventListener('submit', function(event) {
-            if (form.checkValidity() === false) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-          }, false);
-        });
-      }, false);
-    })();
-    </script>
 
 
 

@@ -98,12 +98,73 @@ $(function() {
     checkMod();
 });
 
-// $( window ).resize(function() {
-//     console.log("checking window");
-//     if (Modernizr.mq('(min-width: 576px)')) {
-//         console.log("smalling");
-//     }
-// });
+// Modal validation controllers
+$(".loginModalLink").click(function() {
+    $('.lemail').remove();
+    $('.lpass').remove();
+});
+
+$('#login-modal-form').submit(function(e){
+    let errors = 0;
+    if($("#loginEmail").val() == ""){
+        $('.lemail').remove();
+        $('#loginEmailmessage').before('<p class="error lemail">Please enter login email</p>');
+        errors++;
+    } else $('.lemail').remove();
+
+    if($("#loginPassword").val() == ""){
+        $('.lpass').remove();
+        $('#loginPasswordmessage').before('<p class="error lpass">Please enter login password</p>');
+        errors++;
+    } else $('.lpass').remove();
+    if (errors > 0) e.preventDefault();
+
+})
+
+$('#register-modal-form').submit(function(e){
+    let errors = 0;
+    let email_regex = /^[a-zA-Z0-9.+_-]+@[a-zA-z0-9._-]+\.[a-zA-z]+$/;
+    if($("#regEmail").val() == ""){
+        $('.remail').remove();
+        $('#regEmailmessage').before('<p class="error remail">Please enter email</p>');
+        errors++;
+    }else if (!email_regex.test($("#regEmail").val())){
+            $('.remail').remove();
+            $('#regEmailmessage').before('<p class="error remail">Email must be valid</p>');
+            errors++;
+    } else $('.remail').remove();
+
+    if($("#regfirstName").val() == ""){
+        $('.rfn').remove();
+        $('#regfirstNamemessage').before('<p class="error rfn">Please enter first name</p>');
+        errors++;
+    }else if ($("#regfirstName").val().length < 3){
+            $('.rfn').remove();
+            $('#regfirstNamemessage').before('<p class="error rfn">First name must be at least 3 characters</p>');
+            errors++;
+    } else $('.rfn').remove();
+
+    if($("#reglastName").val() == ""){
+        $('.rln').remove();
+        $('#reglastNamemessage').before('<p class="error rln">Please enter last name</p>');
+        errors++;
+    }else if ($("#reglastName").val().length < 3){
+            $('.rln').remove();
+            $('#reglastNamemessage').before('<p class="error rln">Last name must be at least 3 characters</p>');
+            errors++;
+    } else $('.rln').remove();
+
+    if($("#regPassword").val() == ""){
+        $('.rpass').remove();
+        $('#regPasswordmessage').before('<p class="error rpass">Please enter password</p>');
+        errors++;
+    } else if ($("#regPassword").val().length < 8){
+            $('.rpass').remove();
+            $('#regPasswordmessage').before('<p class="error rpass">Password must be at least 8 characters</p>');
+            errors++;
+    } else $('.rpass').remove();
+    if (errors > 0) e.preventDefault();
+})
 
     </script>
 </body>

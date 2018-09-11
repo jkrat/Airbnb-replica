@@ -120,3 +120,6 @@ border: 1px solid #a8a7a7;
     margin-top: 20px;
 }
  /*  Modals */
+ .error {
+     color: red;
+ }

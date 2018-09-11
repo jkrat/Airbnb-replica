@@ -19,21 +19,21 @@
     </div>
 
     <div class="listing-main">
-        <p class="red-text">ENTIRE HOUSE</p>
-        <h3 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h3>
+        <p class="red-text">{{ listing.listing_type }}</p>
+        <h3 class="card-text">{{ listing.name }}</h3>
         <div class="flex-container">
-            <p class="listing-city">New York</p>
+            <p class="listing-city">{{ listing.city }}, {{ listing.city }}</p>
             <img class="tiny-img" src="" alt="">
         </div>
         <div class="container">
             <div class="row">
                 <div class="col ">
-                    <p class="living-icon"><i class="fas fa-users"></i>  4 guests</p>
-                    <p class="living-icon"><i class="fas fa-door-open"></i>  1 bedroom</p>
+                    <p class="living-icon"><i class="fas fa-users"></i>  {{ listing.guests }} guests</p>
+                    <p class="living-icon"><i class="fas fa-door-open"></i>  {{ listing.bedrooms }} bedroom</p>
                 </div>
                 <div class="col">
-                    <p class="living-icon"><i class="fas fa-bed"></i>  1 bed</p>
-                    <p class="living-icon"><i class="fas fa-bath"></i>  2 bathrooms</p>
+                    <p class="living-icon"><i class="fas fa-bed"></i>  {{ listing.beds }} bed</p>
+                    <p class="living-icon"><i class="fas fa-bath"></i>  {{ listing.bathrooms }}bathrooms</p>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
         </div>
         <hr class="listing">
         <div>
-            <p>Enjoy Central Park views from your bedroom window! This is the ideal room for those sho like easy access to the hich energy city by day, but prefer to come home to a peaceful, tree-lined neighborhood to get a good night of rest.</p>
+            <p>{{ listing.description }}</p>
             <a class="link" data-toggle="collapse" data-target="#space-more" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><p class="greentext">Read more about the space  &#x022C1;</p></a>
             <div class="collapse" id="space-more">
                 <p>The space</p>
@@ -129,7 +129,7 @@
             <footer id="filter-submit-footer" class="flex-container fixed-bottom">
                 <div>
                     <div class="">
-                        <h4 class="inline no-margin">$44</h4>
+                        <h4 class="inline no-margin">${{ listing.price }}</h4>
                         <p class="inline no-margin">per night</p>
                     </div>
                     <div>

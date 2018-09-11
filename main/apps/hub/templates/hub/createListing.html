@@ -1,12 +1,12 @@
 {% extends './base.html' %} 
 {% load static %}
 
-
-    {% block navs %}
+ 
+    {% block navs %} 
 
     <nav id="small-search-nav" class="navbar flex-container fixed-top">
         <div>
-            <a class="small-search-navbar-brand inline" href="#">
+            <a class="small-search-navbar-brand inline" href="{% url 'hub:profile' %}">
                 <i class="fas fa-times"></i>
             </a>
         </div>
@@ -27,23 +27,53 @@
     {% block body %} 
 
     <div id="small-filters-main" class="main">
-        <form action="">
+        <form class="form" action="{% url 'listing:newListing' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <p>Listing Name</p>
+                <input type="text" class="form-control" name="name" value="" placeholder="">
+            </div>
+            <hr class="small-screen">
+            <hr class="hr-works">
+            <div class="form-group">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" name="address" placeholder="1234 Main St">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" name="city">
+                </div>
+                <div class="form-group col-md-4">
+                <label for="inputState">State</label>
+                <select name="state" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+                </div>
+                <div class="form-group col-md-2">
+                <label for="inputZip">Zip</label>
+                <input type="text" class="form-control" name="zip">
+                </div>
+            </div>
+            <hr class="small-screen">
+
             <div class="hometype">
-                <p class="first-filter-title">Home Type</p>
+                <p class="first-filter-title">Property Type</p>
                 <div>
                     <ul>
                         <li>
-                            <input type="checkbox">
+                            <input type="checkbox" class="home-type" name="homeType" value="entirePlace" checked>
                             <label for="">Entire place</label>
                             <p>Have a place to yourself</p>
                         </li>
                         <li>
-                            <input type="checkbox">
+                            <input type="checkbox" class="home-type" name="homeType" value="privateRoom">
                             <label for="">Private room</label>
                             <p>Have your own room and share some common spaces</p>
                         </li>
                         <li>
-                            <input type="checkbox">
+                            <input type="checkbox" class="home-type" name="homeType" value="sharedRoom">
                             <label for="">Shared room</label>
                             <p>Stray in a shared space, like a common room</p>
                         </li>
@@ -51,97 +81,208 @@
                 </div>
             </div>
             <hr class="small-screen">
+            <div class="guests">
+                <p>Guests</p>
+                <ul>
+                    <li class="flex-container">
+                        <p>Max Guests</p>
+                        <div>
+                            <input type="hidden" id="guestsinput" name="maxguests" value="1">
+                            <i id="guest-" class="fas fa-minus-circle fa-lg"></i>
+                            <span id="guests">1</span>
+                            <i id="guestup" class="fas fa-plus-circle fa-lg"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <hr class="small-screen">
             <div class="roomtype">
                 <p>Rooms and beds</p>
                 <ul>
                     <li class="flex-container">
                         <p>Beds</p>
-                        <div><a class="disabled" href=""><i class="fas fa-minus-circle fa-lg"></i></a><span>0+</span><a class="active" href=""><i class="fas fa-plus-circle fa-lg"></i></a></div>
+                        <div>
+                            <input type="hidden" id="bedsinput" name="beds" value="0">
+                            <i id="bed-" class="fas fa-minus-circle fa-lg"></i>
+                            <span id="beds">0</span>
+                            <i id="bedup" class="fas fa-plus-circle fa-lg"></i>
+                        </div>
                     </li>
                     <li class="flex-container">
                         <p>Bedrooms</p>
-                        <div><i class="fas fa-minus-circle fa-lg"></i><span>0+</span><i class="fas fa-plus-circle fa-lg"></i></div>
+                        <div>
+                            <input type="hidden" id="bedroomsinput" name="bedrooms" value="0">
+                            <i id="bedroom-" class="fas fa-minus-circle fa-lg"></i>
+                            <span id="bedrooms">0</span>
+                            <i id="bedroomup" class="fas fa-plus-circle fa-lg"></i>
+                        </div>
                     </li>
                     <li class="flex-container">
                         <p>Bathrooms</p>
-                        <div><i class="fas fa-minus-circle fa-lg"></i><span>0+</span><i class="fas fa-plus-circle fa-lg"></i></div>
+                        <div>
+                            <input type="hidden" id="bathroomsinput" name="bathrooms" value="0">
+                            <i id="bathroom-" class="fas fa-minus-circle fa-lg"></i>
+                            <span id="bathrooms">0</span>
+                            <i id="bathroomup" class="fas fa-plus-circle fa-lg"></i>
+                        </div>
                     </li>
                 </ul>
             </div>
             <hr class="small-screen">
+            <p>Amenities</p>
             <div class="amenities">
-            <div class="flex-container">
-                <p>Amenities</p>
-                <a class="link" data-toggle="collapse" data-target="#amenity-options" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Show all amenities &#x022C1;</a>
-            </div>
-            <div class="collapse" id="amenity-options">
-            <ul>
-                <li></li><input type="checkbox"><label for=""></label> Kitchen</li>
-                <li></li><input type="checkbox"><label for=""></label> Heating</li>
-                <li></li><input type="checkbox"><label for=""></label> Heating</li>
-                <li></li><input type="checkbox"><label for=""></label> Heating</li>
-                <li></li><input type="checkbox"><label for=""></label> Heating</li>
-                <li></li><input type="checkbox"><label for=""></label> Heating</li>
-                <li></li><input type="checkbox"><label for=""></label> Heating</li>
-                <li></li><input type="checkbox"><label for=""></label> Heating</li>
-                <li></li><input type="checkbox"><label for=""></label> Heating</li>
-                <li></li><input type="checkbox"><label for=""></label> Heating</li>
-                <li></li><input type="checkbox"><label for=""></label> Heating</li>
-            </ul>
-        </div>
-            </div>
-            <hr class="small-screen">
-            <div class="facilities">
-            <div class="flex-container">
-                <p>Facilities</p>
-                <a class="link" data-toggle="collapse" data-target="#facility-options" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Show all facilities &#x022C1;</a>
-            </div>
-                <div class="collapse" id="facility-options">
-            <ul>
-                <li><input type="checkbox"><label for=""></label> Gym</li>
-                <li><input type="checkbox"><label for=""></label> Free parking on premises</li>
-                <li><input type="checkbox"><label for=""></label> Hot Tum</li>
-                <li><input type="checkbox"><label for=""></label> Pool</li>
-            </ul>
-            </div>
-            </div>
-            <hr class="small-screen">
-            <div class="proptype">
-            <div class="flex-container">
-                <p>Property type</p>
-                <a class="link" data-toggle="collapse" data-target="#property-options" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Show all property types &#x022C1;</a>
-            </div>
-            <div class="collapse" id="property-options">
-            <ul>
-                <li><input type="checkbox"><label for="">House</label></li>
-                <li><input type="checkbox"><label for="">Apartment</label></li>
-                <li><input type="checkbox"><label for="">Loft</label></li>
-                <li><input type="checkbox"><label for="">Townhouse</label></li>
-                <li><input type="checkbox"><label for="">Villa</label></li>
-            </ul>
-            </div>
-            </div>
-            <hr class="small-screen">
-            <div class="houserules">
-                <p>House Rules</p>
-                <div>
+                <div class="flex-container">
+                    <a class="link" data-toggle="collapse" data-target="#amenity-options" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Show all amenities &#x022C1;</a>
+                </div>
+                <div class="collapse" id="amenity-options">
                     <ul>
-                        <li><input type="checkbox"><label for="">Suitable for events</label></li>
-                        <li><input type="checkbox"><label for="">Pets allowed</label></li>
-                        <li><input type="checkbox"><label for="">Smoking allowed</label></li>
+                        <li></li><input type="checkbox" name="amenities1" value="Kitchen">Kitchen</li>
+                        <li></li><input type="checkbox" name="amenities2" value="Patio or Balcony">Patio or Balcony</li>
+                        <li></li><input type="checkbox" name="amenities3" value="Free Parking">Free Parking</li>
+                        <li></li><input type="checkbox" name="amenities4" value="Washer/Dryer">Washer/Dryer</li>
+                        <li></li><input type="checkbox" name="amenities5" value="Wifi">Wifi</li>
+                        <li></li><input type="checkbox" name="amenities6" value="TV">TV</li>
+                        <li></li><input type="checkbox" name="amenities7" value="Private Entrance">Private Entrance</li>
+                        <li></li><input type="checkbox" name="amenities8" value="Air Conditioning">Air Conditioning</li>
+                        <li></li><input type="checkbox" name="amenities9" value="Outdoor Grill">Outdoor Grill</li>
+                        <li></li><input type="checkbox" name="amenities10" value="Coffee Maker">Coffee Maker</li>
+                        <li></li><input type="checkbox" name="amenities11" value="Fireplace">Fireplace</li>
                     </ul>
                 </div>
             </div>
+            <hr class="small-screen">
+            <div class="form-group">
+                <p>Description</p>
+                <textarea type="text" class="form-control" name="description" value="" placeholder="" rows="3"></textarea>
+            </div>
+            <div></div>  
+            <hr class="hr-works">
+            <!-- Range Slider -->
+            <p>Price</p>
+            <div class="rangeslider-container">
+                <div class="rangeslider-main">
+                    <input id="price-input" type="range" name="price" value="100" step="5" min="10" max="400">
+                    <div class="rangeslider-range">
+                        <small class="rangeslider-min pull-left">Min</small>
+                        <small class="rangeslider-max pull-right">Max</small>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="host" value="{{ request.session.data.id }}">
             <div id="filter-submit-footer">
-                <button type="button" class="btn btn-block" href="{% url 'hub:filterResults' %}"> Show Homes</button>
+                <button type="submit" class="btn btn-block">Create Listing</button>
             </div>
         </form> 
     </div>
 
-
+   
     {% endblock body %}
 
 
     {% block scripts %}
+    <script>
+    $('.home-type').click(function(e) {
+    $('.home-type').not(this).prop('checked', false);
+});
+
+let guests = 1;
+let beds = 0;
+let bedrooms = 0;
+let bathrooms = 0;
+
+$('#guest-').click(function(e) {
+    console.log("down");
+    if (guests > 1) {
+        guests--;
+        $('#guests').text(guests);
+        $('#guestsinput').attr('value', guests);
+    }
+});
+$('#guestup').click(function(e) {
+    console.log("down");
+    if (guests < 10) {
+        guests++;
+        $('#guests').text(guests);
+        $('#guestsinput').attr('value', guests);
+    }
+});
+$('#bed-').click(function(e) {
+    console.log("down");
+    if (beds > 0) {
+        beds--;
+        $('#beds').text(beds);
+        $('#bedsinput').attr('value', beds);
+    }
+});
+
+$('#bedup').click(function(e) {
+    console.log("up");
+    if (beds < 8) {
+        beds++;
+        $('#beds').text(beds);
+        $('#beds').attr('value');
+        $('#bedsinput').attr('value', beds);
+    }
+});
+
+$('#bedroom-').click(function(e) {
+    console.log("down");
+    if (bedrooms > 0) {
+        bedrooms--;
+        $('#bedrooms').text(bedrooms);
+        $('#bedroomsinput').attr('value', bedrooms);
+    }
+});
+
+$('#bedroomup').click(function(e) {
+    console.log("up");
+    if (bedrooms < 8) {
+        bedrooms++;
+        $('#bedrooms').text(bedrooms);
+        $('#bedrooms').attr('value');
+        $('#bedroomsinput').attr('value', bedrooms);
+    }
+});
+
+$('#bathroom-').click(function(e) {
+    console.log("down");
+    if (bathrooms > 0) {
+        bathrooms--;
+        $('#bathrooms').text(bathrooms);
+        $('#bathroomsinput').attr('value', bathrooms);
+    }
+});
+
+$('#bathroomup').click(function(e) {
+    console.log("up");
+    if (bathrooms < 8) {
+        bathrooms++;
+        $('#bathrooms').text(bathrooms);
+        $('#bathroomsinput').attr('value', bathrooms);
+    }
+});
+
+//custom slider javascript
+var $element = $('input[type="range"]');
+var $handle;
+
+$element
+.rangeslider({
+polyfill: false,
+onInit: function() {
+  $handle = $('.rangeslider__handle', this.$range);
+  updateHandle($handle[0], this.value);
+}
+})
+.on('input', function() {
+updateHandle($handle[0], this.value);
+});
+
+function updateHandle(el, val) {
+    $('#price-input').attr('value', val);
+    el.textContent = " " + "$" + val + " ";
+}
+    </script>
+
 
     {% endblock scripts %}

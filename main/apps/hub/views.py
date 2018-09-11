@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from apps.user.models import *
+from apps.listing.models import *
 
 def landing(request):
     return render(request, "hub/landing.html")
@@ -8,7 +10,10 @@ def home(request):
     return render(request, "hub/dashboard.html")
 
 def becomeHost(request):
-    return render(request, "hub/createListing.html")
+    if ('data' in request.session):
+        return render(request, "hub/createListing.html")
+    else:
+        return redirect("hub:home")
 
 def filterResults(request):
     return redirect("hub:home")
@@ -28,8 +33,13 @@ def profile(request):
     else:
         return redirect("hub:home")
 
-def listing(request):
-    return render(request, "hub/ListingProfile.html")
+def listing(request, listing_id):
+    context = {
+        'listing': Listing.objects.get(id=listing_id)
+    }
+    print(Listing.objects.get(id=listing_id))
+    print(context)
+    return render(request, "hub/ListingProfile.html", context)
     # return redirect("listingProfile")
 
 

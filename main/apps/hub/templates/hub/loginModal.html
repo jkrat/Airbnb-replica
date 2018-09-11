@@ -9,20 +9,19 @@
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <form class="form" action="{% url 'user:login' %}" method="POST"> 
+                    <form class="form" id="login-modal-form" action="{% url 'user:login' %}" method="POST"> 
                         {% csrf_token %}
-                        <h1 class="h3 mb-3 font-weight-normal"></h1>
-                        <div class="form-group">
-                            <input type="email" class="form-control" name="loginEmail" value="" placeholder="Email Address">
+                        <div id="loginEmailmessage" class="form-group">
+                            <input type="email" id="loginEmail" class="form-control" name="loginEmail" placeholder="Email Address">
                         </div>
-                        <div class="form-group">
-                            <input type="password" class="passwordInput form-control" name="loginPassword" value="" placeholder="Password" data-ng-required="">
+                        <div id="loginPasswordmessage"  class="form-group">
+                            <input type="password" id="loginPassword" class="passwordInput form-control" name="loginPassword" placeholder="Password" data-ng-required="">
                         </div>
                         <div class="flex-container mb-3">
-                            <label for=""><input type="checkbox" value="remember-me">  Remember me</label>
+                            <label><input type="checkbox" value="remember-me">  Remember me</label>
                             <a class="showpassword greentext" href="#">Show password</a>
                         </div>
-                        <button type="submit" class="btn btn-lg btn-block rausch-bg modal-button">Log in</button>
+                        <button type="submit" id="ggggg" class="btn btn-lg btn-block rausch-bg modal-button">Log in</button>
                         <a class="greentext" href="">Forgot password?</a>
                         <hr>
                         <p>Don't have an account? <span><a id="signinFromModal"class="greentext" data-toggle="modal" href="#registerModal">Sign in</a></span></p>

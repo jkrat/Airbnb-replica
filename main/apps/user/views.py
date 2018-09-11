@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from apps.user.models import *
 from django.contrib import messages 
 from django.urls import reverse
@@ -14,8 +15,7 @@ def register_user(request):
     request.session['data'] = {
         "email": request.POST['email'],
         "firstName": request.POST['firstName'],
-        "lastName": request.POST['lastName'],
-        # "dob": request.POST['dateOfBirth'],
+        "lastName": request.POST['lastName']
     }
     errors = User.objects.validate(request.POST)
     #registration failure
@@ -32,6 +32,7 @@ def register_user(request):
         request.session['data'] = {
             "id": id,
             "firstName": request.POST['firstName'],
+            'link': "Log out",
             'logged_in': True
         }
         return redirect(reverse("hub:home"))
@@ -43,6 +44,7 @@ def login_user(request):
         request.session['data'] = {
             'id': user,
             'firstName': firstName,
+            'link': "Log out",
             'logged_in': True
         }
         print("logged in: ", request.session['data'])

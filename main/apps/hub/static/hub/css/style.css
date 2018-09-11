@@ -11,7 +11,7 @@ body {
 .flex-container {
     display: flex;
     justify-content: space-between;
-}
+} 
 .inline {
     display: inline-block;
 }
@@ -450,6 +450,11 @@ hr.menu {
     color: #008489;
 } 
 
+hr.hr-works {
+    margin: 3rem 0rem;
+
+}
+
 hr.small-screen {
     margin: 3rem 0rem;
 }
@@ -471,3 +476,8 @@ hr.small-screen {
 .hide {
     display: none;
 }      
+.error {
+    color: red;
+    margin: 0px;
+    padding: 0px;
+}

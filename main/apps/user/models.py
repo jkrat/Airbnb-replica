@@ -69,9 +69,7 @@ class User(models.Model):
     password = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
-    image = models.ImageField(upload_to='media', default='noProfile.png')
-    #     #Many to Many
-    # relationships = models.ManyToManyField("self", through="Relationship", symmetrical=False, related_name="related_to")
+    image = models.ImageField(upload_to='media', default='noProfilePic.png')
     objects = UserManager()
 
 def handle_uploaded_file(file, filename):

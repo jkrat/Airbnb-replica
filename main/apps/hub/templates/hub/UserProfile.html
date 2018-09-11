@@ -27,7 +27,7 @@
                                     add Profile Photo
                                   </button></li>
                             <li><p id="name"class="display-4">{{ request.session.data.firstName }}</p></li>
-                            <li><a href="{% url 'hub:listing' %}" class="link">Your Porperty</a></li>
+                            <li><a href="#" class="link">Your Porperty</a></li>
                             <li><a href="{% url 'hub:profile' %}" class="link">Edit Profile</a></li>
                         </ul>
                     </div>
@@ -38,6 +38,7 @@
                         <ul>
                             <li><a href="{% url 'hub:profile' %}" class="link">View Trips</a></li>
                             <li><a href="{% url 'hub:profile' %}" class="link">Saved Trips</a></li>
+                            <li><a href="{% url 'listing:amenity' %}" class="link">fill amenities</a></li>
                             <li><a href="{% url 'hub:becomeHost' %}" class="link">Become a Host</a></li>
                         </ul> 
                     </div>
