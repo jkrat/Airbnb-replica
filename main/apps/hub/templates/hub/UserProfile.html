@@ -19,7 +19,7 @@
             <div class="col-sm-12 col-md-3 container">
                 <div class="user-card">
                     <div class="container card-header">
-                        <img id="user-card-img-top" src="{{user.image.url}}" alt="Card image cap">
+                        <img id="user-card-img-top" src="{{ user.image.url }}" alt="Card image cap">
                     </div>
                     <div class="card-body">
                         <ul>
@@ -67,22 +67,26 @@
                 </div>
                 <div class="message-header">
                     <div class="card-header">
-                        Reviews (0 new)
+                        Your Reviews {{ reviews.count }} 
                     </div>
                 </div>
+                {% if reviews %}
                 <div class="user-card message-column">
+                    {% for review in reviews %}
                     <div class="card-body review">
-                        <p>From: name <span>On: date</span></p>
-                        <p>message...</p>
+                        <div class="review-list">
+                            <div class="mini-img-box inline">
+                                <img class="review-mini-img" src="{{ review.user.image.url }}" alt="profile img">
+                            </div>
+                            <div class="review-mini-info inline">
+                                <h6>{{ review.user.firstName }}</h6>    
+                                <p>{{ review.created_at|date:"F Y" }}</p>
+                            </div>
+                        </div>
+                        <p class="review-mini-content">{{ review.content }}</p>
                     </div>
-                    <div class="card-body review">
-                        <p>From: name <span>On: date</span></p>
-                        <p>message...</p>
-                    </div>
-                    <div class="card-body review">
-                        <p>From: name <span>On: date</span></p>
-                        <p>message...</p>
-                    </div>
+                    {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>

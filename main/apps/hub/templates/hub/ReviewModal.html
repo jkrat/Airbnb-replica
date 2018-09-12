@@ -1,0 +1,40 @@
+
+<div class="modal fade" id="ReviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewmodal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Review this Property</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form" id="review-modal-form" action="/listing/{{ listing.id }}/review/" method="POST"> 
+                        {% csrf_token %}
+                        <div id="reviewTitlemessage" class="form-group">
+                            <input type="text" id="reviewTitle" class="form-control" name="title" placeholder="Title">
+                        </div>
+                        <div id="reviewContentmessage"  class="form-group">
+                            <label>Your review:</label>
+                            <textarea type="text" id="reviewContent" class="reviewContent form-control" name="content" placeholder="Review..." data-ng-required="" rows="5"></textarea>
+                        </div>
+                        <div id="reviewRatingmessage" class="form-group"></div>
+                            <label>Stars:</label>
+                            <select class="form-control" name="rating">
+                                <option selected>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>  
+                        <div class="form-group container">
+                        <button type="submit" id="reviewSubmit" class="btn btn-lg btn-block rausch-bg modal-button">Submit</button>
+                        </div>
+                    </form> 
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>

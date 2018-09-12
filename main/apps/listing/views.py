@@ -6,7 +6,6 @@ def newListing(request):
         errors = {}
         fields = ['name', 'city', 'state', 'maxguests', 'beds', 'bedrooms', 'bathrooms',
             'description', 'price']
-        print(Listing.objects.get(id=21))
         for field in fields:
             if field in request.POST:
                 if request.POST[field]=='':
@@ -33,7 +32,8 @@ def newListing(request):
         name = "amenities"
         name = name + str(i)
         if name in request.POST:
-            this_amenity = Amenity.objects.get(name=request.POST[name]) 
+            print(name)
+            this_amenity = Amenity.objects.get(id=i) 
             this_listing.amenities.add(this_amenity)
 
     return redirect("hub:profile")
@@ -46,3 +46,28 @@ def newAmenity(request):
     for item in array:
         Amenity.objects.create(name=item)
     return redirect("hub:profile")
+
+def update(request, listing_id):
+    handle_uploaded_file(request.FILES['newimg'], str(request.FILES['newimg']))
+    listing = Listing.objects.get(id=listing_id)
+    listing.photos = str(request.FILES['newimg'])
+    listing.save()
+    return redirect("hub:profile")
+
+def review(request, listing_id):
+    data = request.POST
+    listing = Listing.objects.get(id=listing_id)
+    user = User.objects.get(id=request.session['data']['id'])
+    this_review = Reviews.objects.create(title=data['title'], content=data['content'], listing=listing, user=user, rating=int(data['rating']))
+    this_review.save()
+
+  
+    total, count = 0, 0
+    for review in listing.reviews.all():
+        total += review.rating
+        count += 1
+    
+    listing.rating = total / count
+    listing.save()
+
+    return redirect("/{}/listingdetails/".format(listing_id))

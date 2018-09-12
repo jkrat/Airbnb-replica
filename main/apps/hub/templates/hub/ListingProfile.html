@@ -1,5 +1,6 @@
 {% extends './base.html' %} 
 {% load static %}
+{% load humanize %}
 
 
     {% block navs %}
@@ -22,7 +23,7 @@
         <p class="red-text">{{ listing.listing_type }}</p>
         <h3 class="card-text">{{ listing.name }}</h3>
         <div class="flex-container">
-            <p class="listing-city">{{ listing.city }}, {{ listing.city }}</p>
+            <p class="listing-city">{{ listing.city }}, {{ listing.state }}</p>
             <img class="tiny-img" src="" alt="">
         </div>
         <div class="container">
@@ -55,75 +56,59 @@
         </div>
         <hr class="listing">
         <div>
-            <a class="link" data-toggle="collapse" data-target="#amenity-options" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><p class="greentext">Show all amenities &#x022C1;</p></a>
             <h6 class="">Amenities</h6>
-            <h6></h6>
-            <p></p>
-            <hr>
-            <h6></h6>
-            <p></p>
-            <hr>
-            <h6></h6>
-            <p></p>
-            <hr>
-            <div class="collapse" id="amenity-options">
-            <h6></h6>
-            <p></p>
-            <hr>
-            <h6></h6>
-            <p></p>
-            <hr>
-            <h6></h6>
-            <p></p>
-            <hr>
-            <h6></h6>
-            <p></p>
-            <hr>
-        </div>
-        <div>
-            <h5>324 Reviews   <span class="space-around greentext"> &#9733; &#9733; &#9733;</span> </h5>
+            {% if amenities %}
+                {% for amenity in amenities %}
+                    <p>{{ amenity.name }}</p>
+                {% endfor %}
+            {% endif %}
         </div>
         <hr class="listing">
         <div>
-            <img src="" alt="">
-            <div>
-                <h5>Alex</h5>
-                <p>July 2018</p>
-            </div>
-            <p>blah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blah</p>
-            <hr>
-            <img src="" alt="">
-            <div>
-                <h5>Alex</h5>
-                <p>July 2018</p>
-            </div>
-            <p>blah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blah</p>
-            <hr>
-            <img src="" alt="">
-            <div>
-                <h5>Alex</h5>
-                <p>July 2018</p>
-            </div>
-            <p>blah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blah</p>
-            <hr>
-            <img src="" alt="">
-            <div>
-                <h5>Alex</h5>
-                <p>July 2018</p>
-            </div>
-            <p>blah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blah</p>
-            <hr>
+            <h5>{{ reviews.count }} Reviews  
+                    {% for i in range %}
+                        {% if listing.rating >= i %}
+                            <span class="greentext"><i class="fas fa-star"></i></span>
+                        {% elif listing.rating > i %}
+                        <span class="greentext"><i class="fas fa-star-half"></i>
+                        {% endif %}
+                    {% endfor %}
         </div>
+        <hr class="listing">
         <div>
-            <h4 class="hosted-by">Hosted by John</h4>
-            <p class="no-margin">New York, New York</p>
-            <p>Joined in November 2015</p>
-            <span></span>
-            <p>blah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blahblah blah</p>
+            {% if reviews %}
+                {% for review in reviews %}
+                <div class="review-list">
+                    <div class="mini-img-box inline">
+                        <img class="review-mini-img" src="{{ review.user.image.url }}" alt="profile img">
+                    </div>
+                    <div class="review-mini-info inline">
+                        <h6>{{ review.user.firstName }}</h6>    
+                        <p>{{ review.created_at|date:"F Y" }}</p>
+                    </div>
+                    <p class="review-mini-content">{{ review.content }}</p>
+                </div>
+                <hr class="listing">
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="flex-container">
+            <div>
+                <h4 class="hosted-by">Hosted by {{ listing.host.firstName }}</h4>
+                <p class="no-margin">{{ listing.city }}, {{ listing.state }} <span>&#x02022;</span> Joined in {{ listing.host.created_at|date:"F Y" }}</p>
+            </div>
+            <div class="mini-host-box">
+                <img class="review-mini-img" src="{{ listing.host.image.url }}" alt="profile img">
+            </div>
+        </div>
             <a class="getModal greentext" data-toggle="modal" href="#messageModal">contact host</a>
         <hr class="listing">
         <div class="map">
-            <h3>Map</h3>
+        {% if 'id' in request.session.data %}
+            <button type="button" class="btn btn-sm btn-light" data-toggle="modal" data-target="#ReviewModal">
+                <h6 class="red-text">Write a Review of this Property</h6>
+              </button>
+        {% endif %}
         </div>
         <hr>
             <footer id="filter-submit-footer" class="flex-container fixed-bottom">
@@ -143,6 +128,8 @@
         </form> 
     </div>
     
+    {% include 'hub/ReviewModal.html' %}
+
     {% endblock body %}
 
 

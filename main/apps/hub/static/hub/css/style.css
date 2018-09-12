@@ -15,6 +15,22 @@ body {
 .inline {
     display: inline-block;
 }
+.review-list {
+    margin-right: 35px;
+}
+.review-mini-info {
+    margin: 0px 0px 0px 30px;
+    padding: 25px 0px 0px 0px;
+}
+.review-mini-content {
+    margin: 0px 0px 0px 0px;
+    padding: 15px 0px 0px 0px;
+}
+.mini-host-box {
+    vertical-align: top;
+    margin-right: 50px;
+    width: 100px;
+}
 #cover, #dashboard-cover {
     position: absolute;
     top: -97px;
@@ -191,10 +207,10 @@ p.top-card {
     outline-width: 0;
 }
 /*  Modals */
-#loginModal {
+#loginModal, #ReviewModal {
     color: #4a4a4a;
 }
-#loginModal .form-control, #registerModal .form-control {
+#loginModal .form-control, #registerModal .form-control, #ReviewModal .form-control {
 border: 1px solid #a8a7a7;
 }
 #loginModal .flex-container, #registerModal .flex-container {
@@ -210,7 +226,7 @@ border: 1px solid #a8a7a7;
     color: #ffffff;
     background-color: #ff5a5f;
 }
-#loginModal p, .register-button {
+#loginModal p, .register-button, .review-button {
     margin-top: 20px;
 }
 /* User Profile */
@@ -218,9 +234,14 @@ border: 1px solid #a8a7a7;
 .user-profile-main {
     margin-top: 30px;
 }
-#user-card-img-top {
+#user-card-img-top, .review-mini-img {
     width: 100%;
     margin-top: 10px;
+    border-radius: 50%;
+}
+.mini-img-box {
+    width: 75px;
+    vertical-align: top;
 }
 .user-profile-card {
     border: 1px solid #dedcdc;
@@ -349,7 +370,7 @@ hr.listing {
     margin: 0px;
 }
 .hosted-by {
-    margin-top: 45px;
+    margin-top: 30px;
 }
 .map {
     margin-bottom: 200px;

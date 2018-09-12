@@ -2,12 +2,17 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from apps.user.models import *
 from apps.listing.models import *
+import datetime
 
 def landing(request):
     return render(request, "hub/landing.html")
 
 def home(request):
-    return render(request, "hub/dashboard.html")
+    context = {
+        'listings': Listing.objects.all(),
+        'range': [1,2,3,4,5]
+    }
+    return render(request, "hub/dashboard.html", context)
 
 def becomeHost(request):
     if ('data' in request.session):
@@ -29,16 +34,24 @@ def filters(request):
 
 def profile(request):
     if ('data' in request.session):
-        return render(request, "hub/userProfile.html", {'user': User.objects.get(id=request.session['data']['id'])} )
+        user = User.objects.get(id=request.session['data']['id'])
+        context = {
+            'user': user,
+            'reviews': Reviews.objects.filter(user_id=user.id)
+        }
+        return render(request, "hub/userProfile.html", context )
     else:
         return redirect("hub:home")
 
 def listing(request, listing_id):
+    listing = Listing.objects.get(id=listing_id)
+    reviews = Reviews.objects.filter(listing_id=listing_id)
     context = {
-        'listing': Listing.objects.get(id=listing_id)
+        'listing': listing,
+        'amenities': listing.amenities.all(),
+        'reviews': reviews,
+        'range': [1,2,3,4,5]
     }
-    print(Listing.objects.get(id=listing_id))
-    print(context)
     return render(request, "hub/ListingProfile.html", context)
     # return redirect("listingProfile")
 
