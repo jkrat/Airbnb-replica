@@ -112,12 +112,12 @@ def update(request):
 def fillusers(request):
     alpha_male = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o']
     alpha_female = ['p','q','r','s','t','u','v','w','x','y']
-    male_first = ['thomas', "Steve", "Juan", "Phillip", "Chuck", "William"]
-    female_first = ['Jennifer', "Laura", "Maria", "Jada", "Karen", "Holland"]
-    last_name = ["Smith", "Kahn", "Cambell", "Cantu", "Newsome", "Werner"]
+    male_first = ['thomas', "Steve", "Juan", "Phillip", "Chuck", "William", "Oliver", "Tommy", "Ben"]
+    female_first = ['Jennifer', "Laura", "Maria", "Jada", "Karen", "Holland", "Sophia", "Tina", "Anna"]
+    last_name = ["Smith", "Kahn", "Cambell", "Cantu", "Newsome", "Werner", "Pulisic", "Weah", "Trapp", "Acosta", "Brooks", "Zusi", "Guzan", "Miller", "Veracruz", "Judge"]
     for item in alpha_male:
-        first = male_first[randint(0, 5)]
-        last = last_name[randint(0, 5)]
+        first = male_first[randint(0, 8)]
+        last = last_name[randint(0, 15)]
         email = item + "@" + item + ".com"
         password = item * 4 + "1" * 4
         image = "m" + item + ".jpg"
@@ -128,11 +128,11 @@ def fillusers(request):
             'password': password,
             'image': image
         }
-        User.objects.register_fake_data(user)
+        # User.objects.register_fake_data(user)
         
     for item in alpha_female:
-        pick = randint(0, 5)
-        pick2 = randint(0, 5)
+        pick = randint(0, 8)
+        pick2 = randint(0, 15)
         first = female_first[pick]
         last = last_name[pick2]
         email = item + "@" + item + ".com"
@@ -145,5 +145,5 @@ def fillusers(request):
             'password': password,
             'image': image
         }
-        User.objects.register_fake_data(user2)
+        # User.objects.register_fake_data(user2)
     return redirect("hub:profile")

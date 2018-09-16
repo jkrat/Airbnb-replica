@@ -88,11 +88,4 @@ def validate_rating(value):
             params={'value': value},
     )
 
-class Reviews(models.Model):
-    title = models.TextField(max_length=255)
-    content = models.TextField(max_length=255)
-    listing = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name ='reviews')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name ='reviews')
-    rating = models.IntegerField(null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+

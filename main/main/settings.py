@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'apps.user',
     'apps.listing',
     'apps.hub',
+    'apps.review',
+    'apps.trip',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

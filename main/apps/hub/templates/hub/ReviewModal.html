@@ -11,9 +11,6 @@
                 <div class="modal-body">
                     <form class="form" id="review-modal-form" action="/listing/{{ listing.id }}/review/" method="POST"> 
                         {% csrf_token %}
-                        <div id="reviewTitlemessage" class="form-group">
-                            <input type="text" id="reviewTitle" class="form-control" name="title" placeholder="Title">
-                        </div>
                         <div id="reviewContentmessage"  class="form-group">
                             <label>Your review:</label>
                             <textarea type="text" id="reviewContent" class="reviewContent form-control" name="content" placeholder="Review..." data-ng-required="" rows="5"></textarea>

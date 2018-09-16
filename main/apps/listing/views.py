@@ -58,7 +58,7 @@ def review(request, listing_id):
     data = request.POST
     listing = Listing.objects.get(id=listing_id)
     user = User.objects.get(id=request.session['data']['id'])
-    this_review = Reviews.objects.create(title=data['title'], content=data['content'], listing=listing, user=user, rating=int(data['rating']))
+    this_review = Reviews.objects.create(content=data['content'], listing=listing, user=user, rating=int(data['rating']))
     this_review.save()
 
     total, count = 0, 0
@@ -99,8 +99,8 @@ desc_list = [
 amenity_list = [
     "Kitchen", "Patio or Balcony", "Free Parking", "Washer/Dryer", "Wifi", "TV", "Private Entrance", "Air Conditioning", "Outdorr Grill", "Coffee Maker", "Fireplace"]
 listing_type_list = ["ENITRE PLACE", "PRIVATE ROOM", "SHARED ROOM"] 
-city_list = ["Dallas", "Seattle", "New York", "Los Angeles", "Chicago", "Miami", "Denver", "Nashville", "Atlanta", "New Orleans",  "Boston", "San Jose", "Austin", "Houston", "Louisville", "Richmond", "Pittsburg"]
-state_list = ["TX", "WA", "NY", "CA", "IL", "FL", "CO", "TN", "GA", "LA", "MA", "CA", "TX", "TX", "KY", "VA", "PA"]
+city_list = ["Dallas", "Seattle", "New York", "Los Angeles", "Chicago", "Miami", "Denver", "Nashville", "Atlanta", "New Orleans",  "Boston", "San Jose", "Austin", "Houston", "Louisville", "Richmond", "Pittsburg", "St. louis", "St. Paul", "Baltimore", "Hartford", "Portland"]
+state_list = ["TX", "WA", "NY", "CA", "IL", "FL", "CO", "TN", "GA", "LA", "MA", "CA", "TX", "TX", "KY", "VA", "PA", "MO", "MN", "MD", "CT", "OR"]
 
 reveiws_list = [
     "This Lodging option was better than I expected. Everything was very easy to understand and my stay was smooth. The location is fantastic and one can walk to places to eat and drink. I will stay there again.", 
@@ -124,7 +124,7 @@ reveiws_list = [
 def filllistings(request):
     user_list = User.objects.all()
     for user in user_list: 
-        rand_location = randint(0, 16)
+        rand_location = randint(0, 11)
         main_image = "h" + str(randint(1,20)) + ".jpg"
         listing_1 = {
             "name": name_list[randint(0, 8)],
@@ -138,7 +138,7 @@ def filllistings(request):
             "state": state_list[rand_location],
             "price": randint(45, 500),
             "host": user.id,
-            "main_photo": main_image
+            "main_photo": main_image 
         } 
         this_listing = Listing.objects.filling_listings(listing_1)
         rand_amenity = [1, randint(2,4), 5, randint(6,7), randint(8,9), randint(10,11)]
@@ -150,8 +150,22 @@ def filllistings(request):
 
 
 def fillreviews(request):
-    array = ["Kitchen", "Patio or Balcony", "Free Parking", "Washer/Dryer", "Wifi", "TV", "Private Entrance", "Air Conditioning", "Outdorr Grill", "Coffee Maker", "Fireplace"]
-    for item in array:
-        Amenity.objects.create(name=item)
+    listing_list = Listing.objects.all()
+    user_list = User.objects.all()
+    count = 1
+    for user in user_list:
+        this_listing = listing_list[randint(0, len(listing_list) - 1)]
+        this_review = Reviews.objects.create(content=reveiws_list[randint(0, len(reveiws_list) - 1)], listing=this_listing, user=user, rating=randint(2,5))
+        this_review.save()
+
+        total, count = 0, 0
+        for review in this_listing.reviews.all():
+            total += review.rating
+            count += 1
+        this_listing.rating = total / count
+        this_listing.save()
+        
+        
     return redirect("hub:profile")
 
+    

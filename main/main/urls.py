@@ -22,5 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('apps.hub.urls', 'hub'), namespace='hub')), 
     path('user/', include(('apps.user.urls', 'user'), namespace='user')), 
-    path('listing/', include(('apps.listing.urls', 'listing'), namespace='listing'))
+    path('listing/', include(('apps.listing.urls', 'listing'), namespace='listing')),
+    path('review/', include(('apps.review.urls', 'review'), namespace='review')),
+    path('trip/', include(('apps.trip.urls', 'trip'), namespace='trip'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
