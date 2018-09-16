@@ -49,6 +49,12 @@ class UserManager(models.Manager):
         hashedpw = (str(hashedpw)).split("'")[1]
         User.objects.create(firstName=data['firstName'], lastName=data['lastName'], email=data['email'], password=hashedpw)
     
+    def register_fake_data(self, data):
+        pw = data['password'] 
+        hashedpw = bcrypt.hashpw(pw.encode(), bcrypt.gensalt())
+        hashedpw = (str(hashedpw)).split("'")[1]
+        User.objects.create(firstName=data['firstName'], lastName=data['lastName'], email=data['email'], password=hashedpw, image = data['image'])
+    
     def validate_login(self, data):
         user = User.objects.filter(email=data['loginEmail'])
         if user:

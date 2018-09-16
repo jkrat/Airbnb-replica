@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from apps.user.models import *
 from django.contrib import messages 
 from django.urls import reverse
+from random import randint
 
 def profile(request):
     return redirect("hub:home") 
@@ -95,6 +96,54 @@ def logout(request):
 def update(request):
     handle_uploaded_file(request.FILES['newimg'], str(request.FILES['newimg']))
     loggedinUser = User.objects.get(id=request.session['data']['id'])
+    # old_image = loggedinUser.image
+    # print(old_image)
+    # if(old_image != "noProfile.png"):
+    #     _delete_file("/Users/Katiegrace/Source/CD/Django/Airbnb clone/main/media" + old_image)
     loggedinUser.image = str(request.FILES['newimg'])
     loggedinUser.save()
     return redirect(reverse("hub:profile"))
+
+
+
+
+# ----------------------------- developer tool - fill random data --------------------------------#
+
+def fillusers(request):
+    alpha_male = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o']
+    alpha_female = ['p','q','r','s','t','u','v','w','x','y']
+    male_first = ['thomas', "Steve", "Juan", "Phillip", "Chuck", "William"]
+    female_first = ['Jennifer', "Laura", "Maria", "Jada", "Karen", "Holland"]
+    last_name = ["Smith", "Kahn", "Cambell", "Cantu", "Newsome", "Werner"]
+    for item in alpha_male:
+        first = male_first[randint(0, 5)]
+        last = last_name[randint(0, 5)]
+        email = item + "@" + item + ".com"
+        password = item * 4 + "1" * 4
+        image = "m" + item + ".jpg"
+        user = {
+            'email': email,
+            'firstName': first,
+            'lastName': last,
+            'password': password,
+            'image': image
+        }
+        User.objects.register_fake_data(user)
+        
+    for item in alpha_female:
+        pick = randint(0, 5)
+        pick2 = randint(0, 5)
+        first = female_first[pick]
+        last = last_name[pick2]
+        email = item + "@" + item + ".com"
+        password = item * 4 + "1" * 4
+        image = "w" + item + ".jpg"
+        user2 = {
+            'email': email,
+            'firstName': first,
+            'lastName': last,
+            'password': password,
+            'image': image
+        }
+        User.objects.register_fake_data(user2)
+    return redirect("hub:profile")

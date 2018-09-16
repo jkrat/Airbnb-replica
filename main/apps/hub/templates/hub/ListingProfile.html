@@ -16,7 +16,7 @@
     {% block body %} 
 
     <div id="Listingmainpic" >
-        <img class="d-block w-100" src="{% static 'hub/images/room1.jpeg' %}" alt="First slide">
+        <img class="d-block w-100" src="{{ listing.main_photo.url }}" alt="First slide">
     </div>
 
     <div class="listing-main">
@@ -118,8 +118,23 @@
                         <p class="inline no-margin">per night</p>
                     </div>
                     <div>
-                        <p class="greentext inline">&#9733; &#9733; &#9733;</p>
-                        <p class="inline"> 342</p>
+                    <!-- <p>
+                            {% for i in range %}
+                            {% if listing.rating >= i %}
+                                <span class="greentext"><i class="fas fa-star"></i></span>
+                            {% elif listing.rating > i %}
+                                <span class="greentext"><i class="fas fa-star-half"></i></span>
+                            {% endif %}
+                        {% endfor %}
+                    {{ listing.reviews.count }}</p> -->
+                    <p>
+                        {% for i in range %}
+                            {% if listing.rating >= i %}
+                                <span class="greentext inline">&#9733</span>                     
+                            {% endif %}
+                        {% endfor %}
+                    {{ listing.reviews.count }}</p>
+                
 
                     </div>
                 </div>

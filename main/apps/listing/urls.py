@@ -3,7 +3,10 @@ from . import views
 
 urlpatterns = [ 
     path('new', views.newListing, name="newListing"),
-    path('amenities', views.newAmenity, name="amenity"),
-    path('<int:listing_id>/update/', views.update, name="update"),
-    path('<int:listing_id>/review/', views.review, name="review")
+    path('<int:listing_id>/updatepic/', views.updatepic, name="updatepic"),
+    path('<int:listing_id>/review/', views.review, name="review"),
+    path('<int:listing_id>/delete/', views.delete, name="delete"),
+    path('fillamenities', views.fillamenities, name="fillamenities"),
+    path('filllistings', views.filllistings, name="filllistings"),
+    path('fillreviews', views.fillreviews, name="fillreviews")
 ] 

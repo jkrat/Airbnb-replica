@@ -1,0 +1,120 @@
+{% extends './base.html' %} 
+{% load static %}
+
+
+    {% block navs %}
+        {{ block.super }}
+    {% endblock navs %} 
+
+     
+    {% block filters %} 
+     
+    {% endblock filters %} 
+
+    
+    {% block body %} 
+
+    <div class="user-profile-main container"> 
+        <div class="row">
+            <div class="col-sm-12 col-md-3 container"> 
+                <div class="user-card">
+                    <div class="container card-header">
+                        <img id="user-card-img-top" src="{{ listing.main_photo.url }}" alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><button type="button" class="btn btn-sm btn-light" data-toggle="modal" data-target="#listingPicModal">
+                                    add Main Listing Photo
+                                  </button></li>
+                            <li><p id="name" class="display-4">{{ listing.name }}</p></li>
+                            <li><p>{{ listing.city }}, {{ listing.state }}</p></li>
+                            <li>
+                            {% for i in range %}
+                                    {% if listing.rating >= i %}
+                                        <span class="greentext"><i class="fas fa-star"></i></span>
+                                    {% elif listing.rating > i %}
+                                        <span class="greentext"><i class="fas fa-star-half"></i></span>
+                                    {% endif %}
+                                {% endfor %}
+                            {{ listing.reviews.count }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="user-card">
+                    <div class="card-header">Quick Links</div>
+                    <div class="card-body">
+                        <ul>
+                            <li><a href="#" class="link">Edit Listing</a></li>
+                            <li><a href="{% url 'hub:profile' %}" class="link">Your Profile</a></li>
+                            <li><a href="{% url 'hub:home' %}" class="link">Home</a></li>
+                            <li><a href="#" class="link">Remove Listing</a></li>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-0 col-md-9 container">
+                <div class="message-header">
+                    <div class="card-header">
+                        Future Reservations (0)
+                    </div>
+                </div>
+                <div class="user-card message-column">
+                    <div class="card-body message">
+                        <p>From: name <span>On: date</span></p>
+                        <p>message...</p>
+                    </div>
+                </div>
+                <div class="message-header">
+                    <div class="card-header">
+                        Past Reservations (0)
+                    </div>
+                </div>
+                <div class="user-card message-column">
+                    <div class="card-body message">
+                        <p>From: name <span>On: date</span></p>
+                        <p>message...</p>
+                    </div>
+                </div>
+                <div class="message-header">
+                    <div class="card-header">
+                        Your Reviews {{ reviews.count }} 
+                    </div>
+                </div>
+                {% if reviews %}
+                <div class="user-card message-column">
+                    {% for review in reviews %}
+                    <div class="card-body review">
+                        <div class="review-list">
+                            <div class="mini-img-box inline">
+                                <img class="review-mini-img" src="{{ review.user.image.url }}" alt="profile img">
+                            </div>
+                            <div class="review-mini-info inline">
+                                <h6>{{ review.user.firstName }}</h6>    
+                                <p>{{ review.created_at|date:"F Y" }}</p>
+                            </div>
+                        </div>
+                        <p class="review-mini-content">{{ review.content }}</p>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>›
+
+
+
+    {% include 'hub/listingPictureModal.html' %}
+    
+   
+    {% endblock body %}
+
+
+    {% block scripts %}
+
+    {% endblock scripts %}
+
+
+   

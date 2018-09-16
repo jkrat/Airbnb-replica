@@ -8,6 +8,7 @@ urlpatterns = [
     path('menu/', views.menu, name="menu"),
     path('profile/', views.profile, name="profile"),
     path('becomeHost/', views.becomeHost, name="becomeHost"),
+    path('<int:listing_id>/userListingProfile/', views.userListingProfile, name="userListingProfile"),
     path('filters/', views.filters, name="filters"),
     path('filterResults/', views.filterResults, name="filterResults"),
     path('searchResults/', views.searchResults, name="searchResults")

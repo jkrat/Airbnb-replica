@@ -272,6 +272,9 @@ border: 1px solid #a8a7a7;
     width: 100%;
     text-align: center;
 }
+.listing-button {
+    padding-top: 75px;
+}
 #main-pic img {
     width: 600px;
 }

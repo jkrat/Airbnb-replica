@@ -37,7 +37,8 @@ def profile(request):
         user = User.objects.get(id=request.session['data']['id'])
         context = {
             'user': user,
-            'reviews': Reviews.objects.filter(user_id=user.id)
+            'listings': user.listings.all(),
+            'reviews': user.reviews.all()
         }
         return render(request, "hub/userProfile.html", context )
     else:
@@ -45,15 +46,25 @@ def profile(request):
 
 def listing(request, listing_id):
     listing = Listing.objects.get(id=listing_id)
-    reviews = Reviews.objects.filter(listing_id=listing_id)
+    # reviews = Reviews.objects.filter(listing_id=listing_id)
     context = {
         'listing': listing,
         'amenities': listing.amenities.all(),
-        'reviews': reviews,
+        'reviews': listing.reviews.all(),
         'range': [1,2,3,4,5]
     }
     return render(request, "hub/ListingProfile.html", context)
     # return redirect("listingProfile")
+
+def userListingProfile(request, listing_id):
+    listing = Listing.objects.get(id=listing_id)
+    context = {
+        'listing': listing,
+        'amenities': listing.amenities.all(),
+        'reviews': listing.reviews.all(),
+        'range': [1,2,3,4,5]
+    }
+    return render(request, "hub/userListingProfile.html", context)
 
 
 

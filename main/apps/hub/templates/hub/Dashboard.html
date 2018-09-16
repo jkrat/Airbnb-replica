@@ -48,10 +48,10 @@
                 {% for listing in listings %}
                     <div class="col-md-6 col-lg-4 column-card">
                         <a href="/{{ listing.id }}/listingdetails"><div class="card">
-                            <img class="card-img-top" src="{% static 'hub/images/room1.jpeg' %}" alt="Card image cap">
+                            <img class="card-img-top" src="{{ listing.main_photo.url }}" alt="Card image cap">
                             <i id="like" class="far fa-heart fa-2x"></i>
                             <div class="card-body">
-                                <p id="stop" class="card-title red-text">{{ listing.listing_type }} <span>&#x02022;</span> {{ listing.city }}</p>
+                                <p id="stop" class="card-title red-text">{{ listing.listing_type }} <span>&#x02022;</span> {{ listing.city|upper }}</p>
                                 <h6 class="card-text">{{ listing.name }}s</h6>
                                 <p class="card-text">${{ listing.price }} per night</p>
                                 <p class="card-text"></p>
@@ -68,22 +68,6 @@
                     </div>
                 {% endfor %}
             {% endif %}
-            <div class="col-md-6 col-lg-4 column-card">
-                    <a href="#"><div class="card">
-                        <img class="card-img-top" src="{% static 'hub/images/room1.jpeg' %}" alt="Card image cap">
-                        <i id="like" class="far fa-heart fa-2x"></i>
-                        <div class="card-body">
-                            <p id="stop" class="card-title">ENTIRE HOUSE <span>&#x02022;</span> CAPE TOWN</p>
-                            <h6 class="card-text">Unwind in a Bright, Airy Space with Rustic Accents</h6>
-                            <p class="card-text">$44 per night</p>
-                            <p class="card-text">
-                                <span class="greentext"><i class="fas fa-star"></i></span> 
-                                <span class="greentext"><i class="fas fa-star"></i></span>
-                                <span class="greentext"><i class="fas fa-star"></i></span> 
-                                <span class="greentext"><i class="fas fa-star-half"></i></i></span> 342</p>
-                        </div>
-                    </div></a>
-                </div>
         </div>
     </div>
 

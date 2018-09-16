@@ -7,7 +7,6 @@ import os
 class ListingManager(models.Manager):
     def add_listing(self, data):
         listing_host = User.objects.get(id=data['host'])
-        city = data['city']
         listing_1 = Listing(
             name = data['name'],
             listing_type = data['homeType'],
@@ -16,10 +15,29 @@ class ListingManager(models.Manager):
             beds = data['beds'],
             bathrooms = data['bathrooms'],
             description = data['description'],
-            city = city.upper(),
+            city = data['city'],
             state = data['state'],
             price = data['price'],
-            host = listing_host
+            host = listing_host,
+        )
+        listing_1.save()
+        return listing_1
+
+    def filling_listings(self, data):
+        listing_host = User.objects.get(id=data['host'])
+        listing_1 = Listing(
+            name = data['name'],
+            listing_type = data['homeType'],
+            guests = data['maxguests'],
+            bedrooms = data['bedrooms'],
+            beds = data['beds'],
+            bathrooms = data['bathrooms'],
+            description = data['description'],
+            city = data['city'],
+            state = data['state'],
+            price = data['price'],
+            host = listing_host,
+            main_photo = data['main_photo'] 
         )
         listing_1.save()
         return listing_1
@@ -43,6 +61,7 @@ class Listing(models.Model):
     price = models.IntegerField(null=True)
     host = models.ForeignKey(User, on_delete=models.CASCADE, related_name ='listings')
     rating = models.IntegerField(null=True)
+    main_photo = models.ImageField(upload_to='media', default='unkownListing.png')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = ListingManager()
@@ -50,7 +69,6 @@ class Listing(models.Model):
 class Photo(models.Model):
     image = models.ImageField(upload_to='media', default='noProfile.png')
     listing = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name='photos')
-    is_first = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

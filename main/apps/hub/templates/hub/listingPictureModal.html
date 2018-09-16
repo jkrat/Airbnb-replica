@@ -1,14 +1,14 @@
-<div class="modal fade" id="userPicModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="listingPicModal" tabindex="-1" role="dialog" aria-labelledby="listingPicModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
+      <div class="modal-content"> 
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Add Photo</h5>
+          <h5 class="modal-title">Add Photo</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-            <form action="/update/2" method="post" enctype="multipart/form-data">
+            <form action="/listing/{{ listing.id}}/updatepic" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for='newimg'>Upload image</label>
@@ -22,4 +22,4 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> 
