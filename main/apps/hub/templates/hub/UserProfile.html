@@ -44,7 +44,7 @@
                             <li><a href="{% url 'listing:fillamenities' %}" class="link">fill amenities</a></li>
                             <li><a href="{% url 'listing:filllistings' %}" class="link">fill listings</a></li>
                             <li><a href="{% url 'user:fillusers' %}" class="link">fill users</a></li>
-                            <li><a href="{% url 'listing:fillreviews' %}" class="link">fill reviews</a></li>
+                            <li><a href="{% url 'review:fill_reviews' %}" class="link">fill reviews</a></li>
                         </ul>
                     </div>
                 </div>
@@ -62,8 +62,8 @@
                     <div class="card-body review">
                         <div class="review-list flex-container">
                             <div>
-                                <div class="mini-img-box inline">
-                                    <img class="review-mini-img" src="{{ listing.main_photo.url }}" alt="listing main img">
+                                <div class="mini-location-img-box inline">
+                                    <img class="location-mini-img" src="{{ listing.main_photo.url }}" alt="listing main img">
                                 </div>
                                 <div class="review-mini-info inline">
                                     <h6>{{ listing.name }}</h6>       

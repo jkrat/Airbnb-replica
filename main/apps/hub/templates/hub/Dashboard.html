@@ -39,43 +39,18 @@
             </a></div>
         </div>
     </div>
-
-<!-- displays listings --> 
-    <div class="container">
-        <h3 class="destination-header">Homes</h3>
-        <div class="row">
-            {% if listings %}
-                {% for listing in listings %}
-                    <div class="col-md-6 col-lg-4 column-card">
-                        <a href="/{{ listing.id }}/listingdetails"><div class="card">
-                            <img class="card-img-top" src="{{ listing.main_photo.url }}" alt="Card image cap">
-                            <i id="like" class="far fa-heart fa-2x"></i>
-                            <div class="card-body">
-                                <p id="stop" class="card-title red-text">{{ listing.listing_type }} <span>&#x02022;</span> {{ listing.city|upper }}</p>
-                                <h6 class="card-text">{{ listing.name }}s</h6>
-                                <p class="card-text">${{ listing.price }} per night</p>
-                                <p class="card-text"></p>
-                                {% for i in range %}
-                                    {% if listing.rating >= i %}
-                                        <span class="greentext"><i class="fas fa-star"></i></span>
-                                    {% elif listing.rating > i %}
-                                        <span class="greentext"><i class="fas fa-star-half"></i></span>
-                                    {% endif %}
-                                {% endfor %}
-                            {{ listing.reviews.count }}</p>
-                            </div>
-                        </div></a>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        </div>
+    
+    <div class="container" id="listing_grid">
+            {% include 'hub/listingsGrid.html' %}
     </div>
 
     {% endblock body %}
 
-
+    
     {% block scripts %}
     <script>
+
+
     $("#click").click(function() {
         console.log("clicked card");
         $.ajax({url: "{% url 'hub:landing' %}", success: function(result){

@@ -13,10 +13,16 @@
     </div>
     <div>
         <div class="collapse navbar-collapse"> 
+            {% if "loginError" in request.session.data %}
+                <h5 class="error">{{ request.session.data.loginError }}</h5>
+            {% endif %}
+            {% if "id" in request.session.data %}
             <a id="User-in-nav" class="nav-link" href="{% url 'hub:profile' %}">{{ request.session.data.firstName }}</a>
             <a class="nav-link" href="{% url 'user:logout' %}">{{ request.session.data.link }}</a>
-            <a class="nav-link getModal" data-toggle="modal" href="#registerModal">Sign Up</a>
-            <a class="nav-link loginModalLink getModal" data-toggle="modal" href="#loginModal">Log in</a>
+                {% else %}
+                <a class="nav-link getModal" data-toggle="modal" href="#registerModal">Sign Up</a>
+                <a class="nav-link loginModalLink getModal" data-toggle="modal" href="#loginModal">Log in</a>
+            {% endif %}
         </div> 
     </div>
 </nav> 

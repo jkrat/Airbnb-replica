@@ -1,14 +1,13 @@
 from django.db import models
 from ..listing.models import Listing
-
+from ..user.models import User
 
 
 class ReviewManager(models.Manager):
-    def add_review(self, data):
+    def add_review(self, data, listing_id, user_id):
         listing = Listing.objects.get(id=listing_id)
-        user = User.objects.get(id=request.session['data']['id'])
+        user = User.objects.get(id=user_id)
         this_review = Reviews.objects.create(content=data['content'], listing=listing, user=user, rating=int(data['rating']))
-        this_review.save()
 
         total, count = 0, 0
         for review in listing.reviews.all():
@@ -16,8 +15,7 @@ class ReviewManager(models.Manager):
             count += 1
         listing.rating = total / count
         listing.save()
-        return redirect("/{}/listingdetails/".format(listing_id))
-
+        return this_review
 
 
 class Reviews(models.Model):

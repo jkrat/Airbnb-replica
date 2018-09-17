@@ -64,6 +64,7 @@ $('#login-modal-form').submit(function(e){
 
 $('#register-modal-form').submit(function(e){
     let errors = 0;
+    print(errors);
     let email_regex = /^[a-zA-Z0-9.+_-]+@[a-zA-z0-9._-]+\.[a-zA-z]+$/;
     if($("#regEmail").val() == ""){
         $('.remail').remove();
@@ -104,17 +105,59 @@ $('#register-modal-form').submit(function(e){
             $('#password').before('<p class="error password">Password must be at least 8 characters</p>');
             errors++;
     } else $('.rpass').remove();
+    
     if (errors > 0) e.preventDefault();
+
 })
 
-let loggedInCheck = $('#User-in-nav').text();
-if(loggedInCheck !== "") {
-    $('.getModal').addClass("hide");
-    console.log("logged in");
-} else {
-    console.log("logged out");
-}
+// Ajax call to search listings
 
+// $('#more-filters').click(function(){
+//     console.log("clicked");
+//     let city = "Dallas";
+//     $.ajax({
+//         url: '/search',
+//         data: {filter: city},
+//         success: function(response){
+//             $('#listing_grid').html(response)
+//         }
+//     })
+// });
+
+
+$('#searchbar_div').mouseover(function(){
+    console.log("mouse");
+});
+$('#searchbar_div').click(function(){
+    console.log("click");
+});
+$('#searchbar_div').submit(function(e){
+    e.preventDefault();
+    console.log("keyup"); 
+        $.ajax({
+        method: "POST",
+        url: '/search/',
+        data: $(this).serialize(),
+        success: function(response){
+            $('#listing_grid').html(response)
+        }
+    })
+});
+
+// success: function(reponse){
+//     $('#listing_grid').html(repsonse)
+
+
+// $('#searchbar-div').keyup(function(){
+//     $.ajax({
+//         method: "POST",
+//         url: $this.attr('action'),
+//         data: $(this).serialize(),
+//         success: function(reponse){
+//             $('#listing_grid').html(repsonse)
+//         }
+//     })
+// })
 
 
 
@@ -164,10 +207,11 @@ var checkMod = function() {
     }
 };
 
+
 $(function() {
     $(window).resize(checkMod);
     checkMod();
-});
+})
 
 
 

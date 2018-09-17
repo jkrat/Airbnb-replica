@@ -1,15 +1,16 @@
 {% load static %}
 
 
-    <form id="searchbar-div" class="form-inline inline mx-3" action="GET">
+    <form class="form-inline inline mx-3" action='{% url "hub:search" %}' method='post' id='searchbar_div'>
         {% csrf_token %}
         <div class="searchbar-div d-flex">
             <div id="search-icon" class="inline">
                 <img src="{% static 'hub/images/search_icon.png' %}" alt="search-icon">     
             </div>
-            <input class="search-input controls" type="text" name="search-location" value="" placeholder="Destination, City, Address">
+            <input class="search-input controls" type="text" name="searchbar_div" placeholder="Destination City">
             <button class="btn search-button" type="submit"></button>
         </div>
     </form>
+
 
     {% include './small-screensearchbar.html' %} 

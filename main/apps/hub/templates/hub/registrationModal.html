@@ -3,7 +3,11 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Register</h5>
+                {% if "loginError" in request.session.data %}
+                    <h5 class="error">{{ request.session.data.loginError }}</h5>
+                    {% else %}
+                    <h5 class="modal-title">Register</h5>
+                {% endif %}
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

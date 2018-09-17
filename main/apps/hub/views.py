@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.http import HttpResponseRedirect
 from apps.user.models import *
 from apps.listing.models import *
@@ -13,6 +13,21 @@ def home(request):
         'range': [1,2,3,4,5]
     }
     return render(request, "hub/dashboard.html", context)
+
+def search(request):
+    keyword = request.POST['searchbar_div']
+    if (keyword == ""):
+        context = {
+            'listings': Listing.objects.all(),
+            'range': [1,2,3,4,5]
+        }
+    else:
+        context = {
+            'listings': Listing.objects.filter(city=keyword),
+            'keyword': keyword,
+            'range': [1,2,3,4,5]
+        }
+    return render(request, "hub/listingsGrid.html", context)
 
 def becomeHost(request):
     if ('data' in request.session):

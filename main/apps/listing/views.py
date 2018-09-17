@@ -54,34 +54,23 @@ def delete(request, listing_id):
     # delete amenity connections to listing
     return redirect("hub:profile")
 
-def review(request, listing_id):
-    data = request.POST
-    listing = Listing.objects.get(id=listing_id)
-    user = User.objects.get(id=request.session['data']['id'])
-    this_review = Reviews.objects.create(content=data['content'], listing=listing, user=user, rating=int(data['rating']))
-    this_review.save()
-
-    total, count = 0, 0
-    for review in listing.reviews.all():
-        total += review.rating
-        count += 1
-    listing.rating = total / count
-    listing.save()
-    return redirect("/{}/listingdetails/".format(listing_id))
+def search(request):
+    keyword = request.POST["search_location"]
+    context = {
+        'listings': Lising.objects.filter(city__startswith=keyword),
+        'keyword': keyword,
+        'range': [1,2,3,4,5]
+    }
+    # return render(reqesut, "hub/dashboard.html", context=context)
+    return redirect("hub:home", context=context)
 
 # ----------------------------- dev tools - fill random data --------------------------------#
-
-def fillamenities(request): 
-    array = ["Kitchen", "Patio or Balcony", "Free Parking", "Washer/Dryer", "Wifi", "TV", "Private Entrance", "Air Conditioning", "Outdorr Grill", "Coffee Maker", "Fireplace"]
-    for item in array:
-        Amenity.objects.create(name=item)
-    return redirect("hub:profile")
 
 
 name_list = [
     "Hip and Cozy In-town King Studio", 
     "Cozy Private Loft Apt with Balcony", 
-    "Walk to Restaurants from a Peaceful, Sunny Backyard Cottage", 
+    "Walk to Restaurants from Your Front Door", 
     "Spend Evenings Barbecuing with a city View", 
     "Peaceful Apartment with a Lush, Zen-Like Garden", 
     "Comfortable spot Near City/Airport", 
@@ -101,7 +90,6 @@ amenity_list = [
 listing_type_list = ["ENITRE PLACE", "PRIVATE ROOM", "SHARED ROOM"] 
 city_list = ["Dallas", "Seattle", "New York", "Los Angeles", "Chicago", "Miami", "Denver", "Nashville", "Atlanta", "New Orleans",  "Boston", "San Jose", "Austin", "Houston", "Louisville", "Richmond", "Pittsburg", "St. louis", "St. Paul", "Baltimore", "Hartford", "Portland"]
 state_list = ["TX", "WA", "NY", "CA", "IL", "FL", "CO", "TN", "GA", "LA", "MA", "CA", "TX", "TX", "KY", "VA", "PA", "MO", "MN", "MD", "CT", "OR"]
-
 reveiws_list = [
     "This Lodging option was better than I expected. Everything was very easy to understand and my stay was smooth. The location is fantastic and one can walk to places to eat and drink. I will stay there again.", 
     "The place is pleasant place to cool your heels after a busy day in downtown. The neighborhood is quiet and there is enough privacy for you to chill for an evening. I will stay there again if the opportunity arises.", "My host was great and very prompt to reply to any questions that we had.  The cottage is an oasis of relaxation and the next time we return to the area we'll definitely try and stay there again.", 
@@ -120,6 +108,11 @@ reveiws_list = [
     "Perfect spot for a quiet getaway. A half mile from downtown. Garage for vehicle. Worth it. We will return.", 
     "The location was amazing! At the steps of everything. The apartment was comfortable for the two of us, we had everything we needed for a great weekend. The bed was super comfortable, and with the bedding it was really warm despite it being 9 degrees outside!", 
     "Jack and Jerrod were very helpful! This studio was perfect for our 2 days of skiing at skiing! Location is excellent, across the street from Peak 9 lift, and within blocks of everything you need to walk to. We did not use our car once after arriving. Very comfy." ]
+
+def fillamenities(request): 
+    for item in amenity_list:
+        Amenity.objects.create(name=item)
+    return redirect("hub:profile")
 
 def filllistings(request):
     user_list = User.objects.all()
@@ -148,24 +141,5 @@ def filllistings(request):
     return redirect("hub:profile")
 
 
-
-def fillreviews(request):
-    listing_list = Listing.objects.all()
-    user_list = User.objects.all()
-    count = 1
-    for user in user_list:
-        this_listing = listing_list[randint(0, len(listing_list) - 1)]
-        this_review = Reviews.objects.create(content=reveiws_list[randint(0, len(reveiws_list) - 1)], listing=this_listing, user=user, rating=randint(2,5))
-        this_review.save()
-
-        total, count = 0, 0
-        for review in this_listing.reviews.all():
-            total += review.rating
-            count += 1
-        this_listing.rating = total / count
-        this_listing.save()
-        
-        
-    return redirect("hub:profile")
 
     

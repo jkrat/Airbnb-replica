@@ -4,8 +4,6 @@ import re
 import bcrypt 
 import os
 
-
-
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 class UserManager(models.Manager):
@@ -14,15 +12,15 @@ class UserManager(models.Manager):
         #name check
         if len(data['firstName']) < 1:
             errors["firstName"] = "invalid first name"
-        # #last name check   
+        #last name check   
         if not data['firstName'].isalpha():
             errors["firstName"] = "invalid first name"
         if len(data['lastName']) < 1:
             errors["lastName"] = "invalid last name"
-        # #last name check   
+        #last name check   
         if not data['lastName'].isalpha():
             errors["lastName"] = "invalid last name"
-        # #email check
+        #email check
         if len(data['email']) < 1 or not EMAIL_REGEX.match(data['email']):
             errors["email"] = "invalid email"
         #duplicate email check
@@ -32,7 +30,7 @@ class UserManager(models.Manager):
                 errors["email"] = "email already registered"
         #password check
         if len(data['password']) < 8:
-            errors["confirmPassword"] = "invalid password"
+            errors["password"] = "invalid password"
         # elif data['password'] != data['confirmPassword']:   
         #     errors["confirmPassword"] = "passwords must match"
         #date check
@@ -47,25 +45,21 @@ class UserManager(models.Manager):
         pw = data['password'] 
         hashedpw = bcrypt.hashpw(pw.encode(), bcrypt.gensalt())
         hashedpw = (str(hashedpw)).split("'")[1]
-        User.objects.create(firstName=data['firstName'], lastName=data['lastName'], email=data['email'], password=hashedpw)
-    
-    def register_fake_data(self, data):
-        pw = data['password'] 
-        hashedpw = bcrypt.hashpw(pw.encode(), bcrypt.gensalt())
-        hashedpw = (str(hashedpw)).split("'")[1]
-        User.objects.create(firstName=data['firstName'], lastName=data['lastName'], email=data['email'], password=hashedpw, image = data['image'])
+        this_user = User.objects.create(firstName=data['firstName'], lastName=data['lastName'], email=data['email'], password=hashedpw)
+        return this_user
     
     def validate_login(self, data):
         user = User.objects.filter(email=data['loginEmail'])
         if user:
-            checkAgainst = User.objects.get(email=data['loginEmail']).password
+            this_user = user[0]
+            checkAgainst = this_user.password
             if bcrypt.checkpw(data['loginPassword'].encode(), checkAgainst.encode()):
-                return User.objects.get(email=data['loginEmail']).id
+                return this_user
         print("password failed") 
         return False
 
-    def updateUser(self, data):
-        User.objects.update(image=data)
+    # def updateUser(self, data):
+    #     User.objects.update(image=data)
 
 
 class User(models.Model):

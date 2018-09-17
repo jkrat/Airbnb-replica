@@ -9,7 +9,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="form" id="review-modal-form" action="/listing/{{ listing.id }}/review/" method="POST"> 
+                    <form class="form" id="review-modal-form" action="/review/{{ listing.id }}/new_review/" method="POST"> 
                         {% csrf_token %}
                         <div id="reviewContentmessage"  class="form-group">
                             <label>Your review:</label>

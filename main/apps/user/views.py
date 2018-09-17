@@ -5,13 +5,6 @@ from django.contrib import messages
 from django.urls import reverse
 from random import randint
 
-def profile(request):
-    return redirect("hub:home") 
-
-# def check_login_status(request):
-#     if 'user_id' not in request.session:
-        # return   
-
 def register_user(request):
     request.session['data'] = {
         "email": request.POST['email'],
@@ -21,18 +14,20 @@ def register_user(request):
     errors = User.objects.validate(request.POST)
     #registration failure
     if len(errors):
+        err_list = ""
         for tag, error in errors.items():
             print(tag, error)
-            messages.error(request, error, extra_tags=tag)
-        return redirect(reverse("hub:home"))
-        #registration success
-    else:
-        User.objects.register(request.POST)
-        request.session.clear()
-        id = User.objects.get(email=request.POST['email']).id
         request.session['data'] = {
-            "id": id,
-            "firstName": request.POST['firstName'],
+            'loginError': "Unable to register. Try Agian."
+        }
+        return redirect(reverse("hub:home"))
+    #registration success
+    else:
+        this_user = User.objects.register(request.POST)
+        request.session.clear()
+        request.session['data'] = {
+            "id": this_user.id,
+            "firstName": this_user.firstName,
             'link': "Log out",
             'logged_in': True
         }
@@ -40,68 +35,37 @@ def register_user(request):
 
 def login_user(request):
     user = User.objects.validate_login(request.POST)
+    #registration success
     if user:
-        firstName =User.objects.get(id=user).firstName
         request.session['data'] = {
-            'id': user,
-            'firstName': firstName,
+            'id': user.id,
+            'firstName': user.firstName,
             'link': "Log out",
             'logged_in': True
         }
-        print("logged in: ", request.session['data'])
-        print(request.session['data']['id'])
         return redirect(reverse("hub:home"))
+    #registration failure
     else:
         request.session['data'] = {
             'loginEmail': request.POST['loginEmail'],
-            'loginError': "unable to login"
+            'loginError': "Unable to login. Try Agian."
         }
         return redirect(reverse("hub:home"))
 
-# def access_wall(request):
-#     if 'data' in request.session:
-#         context = {
-#             "friends": User.objects.filter(relationships__id=request.session['data']['id']).exclude(id=request.session['data']['id']),
-#             "nonFriends": User.objects.all().exclude(relationships__id=request.session['data']['id']).exclude(id=request.session['data']['id'])
-#         }
-#         print(context)
-#         return render(request, "belt/wall.html", context)
-#     return redirect("home")
-
-# def display_user(request, user_id): 
-#     context = {
-#         "user": User.objects.get(id=user_id)
-#     }
-#     return redirect(" hub:profile")
-
-# def add(request, user_id):
-#     Relationship.objects.create(from_user_id=user_id, to_user_id=request.session['data']['id'])
-#     Relationship.objects.create(from_user_id=request.session['data']['id'], to_user_id=user_id)
-
-
-#     return redirect("wall")
-
-# def remove(request, user_id): 
-#     Relationship.objects.filter(from_user_id=user_id, to_user_id=request.session['data']['id']).delete()
-#     Relationship.objects.filter(from_user_id=request.session['data']['id'], to_user_id=user_id).delete()
-#     return redirect("wall")
 
 def logout(request):
     request.session.clear()
-    print("\n\n")
-    print("--------------- loggedout -------------")
-    print("\n\n")
     return redirect(reverse("hub:home"))
 
 def update(request):
     handle_uploaded_file(request.FILES['newimg'], str(request.FILES['newimg']))
-    loggedinUser = User.objects.get(id=request.session['data']['id'])
     # old_image = loggedinUser.image
     # print(old_image)
     # if(old_image != "noProfile.png"):
     #     _delete_file("/Users/Katiegrace/Source/CD/Django/Airbnb clone/main/media" + old_image)
-    loggedinUser.image = str(request.FILES['newimg'])
-    loggedinUser.save()
+    this_user = User.objects.get(id=request.session['data']['id'])
+    this_user.image = str(request.FILES['newimg'])
+    this_user.save()
     return redirect(reverse("hub:profile"))
 
 
@@ -120,15 +84,16 @@ def fillusers(request):
         last = last_name[randint(0, 15)]
         email = item + "@" + item + ".com"
         password = item * 4 + "1" * 4
-        image = "m" + item + ".jpg"
-        user = {
+        image1 = "m" + item + ".jpg"
+        user1 = {
             'email': email,
             'firstName': first,
             'lastName': last,
             'password': password,
-            'image': image
         }
-        # User.objects.register_fake_data(user)
+        this_user = User.objects.register(user1)
+        this_user.image = image1
+        this_user.save()
         
     for item in alpha_female:
         pick = randint(0, 8)
@@ -137,13 +102,14 @@ def fillusers(request):
         last = last_name[pick2]
         email = item + "@" + item + ".com"
         password = item * 4 + "1" * 4
-        image = "w" + item + ".jpg"
+        image2 = "w" + item + ".jpg"
         user2 = {
             'email': email,
             'firstName': first,
             'lastName': last,
             'password': password,
-            'image': image
         }
-        # User.objects.register_fake_data(user2)
+        this_user = User.objects.register(user2)
+        this_user.image = image2
+        this_user.save()
     return redirect("hub:profile")
