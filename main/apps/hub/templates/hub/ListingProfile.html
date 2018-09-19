@@ -138,18 +138,29 @@
 
                     </div>
                 </div>
-                <button type="button" class="btn end-button rausch-bg"> Book</button>
+                <button type="button" class="btn end-button rausch-bg" data-toggle="modal" data-target="#tripDateModal"> Book</button>
             </footer>
         </form> 
     </div>
     
     {% include 'hub/ReviewModal.html' %}
+    {% include 'hub/tripDateModal.html' %}
 
     {% endblock body %}
 
 
     {% block scripts %}
         <script>
+
+    $().daterangepicker();
+
+    $('input[name="daterange"]').daterangepicker({
+        "startDate": moment(),
+        "endDate": "05/30/2019"
+    }, function(start, end, label) {
+    console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+    });
+
         </script>
     {% endblock scripts %}
 

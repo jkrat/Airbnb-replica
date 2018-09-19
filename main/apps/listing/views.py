@@ -54,15 +54,15 @@ def delete(request, listing_id):
     # delete amenity connections to listing
     return redirect("hub:profile")
 
-def search(request):
-    keyword = request.POST["search_location"]
-    context = {
-        'listings': Lising.objects.filter(city__startswith=keyword),
-        'keyword': keyword,
-        'range': [1,2,3,4,5]
-    }
-    # return render(reqesut, "hub/dashboard.html", context=context)
-    return redirect("hub:home", context=context)
+# def search(request):
+#     keyword = request.POST["search_location"]
+#     context = {
+#         'listings': Lising.objects.filter(city__startswith=keyword),
+#         'keyword': keyword,
+#         'range': [1,2,3,4,5]
+#     }
+#     # return render(reqesut, "hub/dashboard.html", context=context)
+#     return redirect("hub:home", context=context)
 
 # ----------------------------- dev tools - fill random data --------------------------------#
 

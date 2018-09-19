@@ -16,7 +16,7 @@ class ListingManager(models.Manager):
             bathrooms = data['bathrooms'],
             description = data['description'],
             city = data['city'],
-            state = data['state'],
+            state = data['state'], 
             price = data['price'],
             host = listing_host,
         )

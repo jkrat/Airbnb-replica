@@ -1,0 +1,31 @@
+
+<div class="modal fade" id="tripDateModal" tabindex="-1" role="dialog" aria-labelledby="tripDateModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm the Dates of your stay:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="form" id="date-modal-form" action="/trip/{{ listing.id }}/create" method="POST"> 
+                    {% csrf_token %}
+                    <div id="tripNamemessage"  class="form-group">
+                        <label>Trip Name:</label>
+                        <input type="text" id="tripName" class="tripName form-control" name="name" placeholder="">
+                    </div>
+                    <div id="reviewRatingmessage" class="form-group"></div>
+                        <label>Dates</label>
+                        <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+                    </div>  
+                    <div class="form-group container">
+                    <button type="submit" id="dateSubmit" class="btn btn-lg btn-block rausch-bg modal-button">Submit</button>
+                    </div>
+                </form> 
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
