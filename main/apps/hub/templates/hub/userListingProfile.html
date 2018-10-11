@@ -26,7 +26,7 @@
                             <li><button type="button" class="btn btn-sm btn-light" data-toggle="modal" data-target="#listingPicModal">
                                     add Main Listing Photo
                                   </button></li>
-                            <li><p id="name" class="display-4">{{ listing.name }}</p></li>
+                            <li><h4>{{ listing.name }}</h4></li>
                             <li><p>{{ listing.city }}, {{ listing.state }}</p></li>
                             <li>
                             {% for i in range %}
@@ -56,8 +56,36 @@
             
             <div class="col-sm-0 col-md-9 container">
                 <div class="message-header">
+                        <div class="card-header">
+                            Future Bookings ({{ bookings.count }})
+                        </div>
+                    </div>
+                    {% if bookings %}
+                    <div class="user-card message-column">
+                        {% for booking in bookings %}
+                        <div class="card-body booking">
+                            <div class="review-list flex-container">
+                                <div>
+                                    <div class="mini-location-img-box inline">
+                                        <img class="review-mini-img" src="{{ booking.user.image.url }}" alt="booker main img">
+                                    </div>
+                                    <div class="review-mini-info inline">
+                                        <h6>{{ booking.name }}</h6>       
+                                        <p style="margin-bottom: .2rem;">{{ trip.listing.listing_type }}</p>
+                                        <p>{{ booking.date_range }}</p>
+                                    </div>
+                                </div>
+                                <div class="listing-button">
+                                    <a href="#"><button class="btn rausch-bg ">View Details</button></a>
+                                </div>
+                            </div>
+                        </div> 
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                <div class="message-header">
                     <div class="card-header">
-                        Future Reservations (0)
+                        Past Bookings (0)
                     </div>
                 </div>
                 <div class="user-card message-column">
@@ -68,18 +96,7 @@
                 </div>
                 <div class="message-header">
                     <div class="card-header">
-                        Past Reservations (0)
-                    </div>
-                </div>
-                <div class="user-card message-column">
-                    <div class="card-body message">
-                        <p>From: name <span>On: date</span></p>
-                        <p>message...</p>
-                    </div>
-                </div>
-                <div class="message-header">
-                    <div class="card-header">
-                        Your Reviews {{ reviews.count }} 
+                        Listing Reviews {{ reviews.count }} 
                     </div>
                 </div>
                 {% if reviews %}

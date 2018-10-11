@@ -37,15 +37,17 @@
                     <div class="card-body">
                         <ul>
                             <li><a href="{% url 'hub:profile' %}" class="link">View Trips</a></li>
-                            <li><a href="{% url 'hub:profile' %}" class="link">Saved Trips</a></li>
+                            <li><a href="{% url 'hub:profile' %}" class="link">Saved Listings</a></li>
                             <li><a href="{% url 'hub:becomeHost' %}" class="link">Become a Host</a></li>
                         </ul> 
+                        {% if request.session.data.id == 1 %}
                         <ul>
                             <li><a href="{% url 'listing:fillamenities' %}" class="link">fill amenities</a></li>
                             <li><a href="{% url 'listing:filllistings' %}" class="link">fill listings</a></li>
                             <li><a href="{% url 'user:fillusers' %}" class="link">fill users</a></li>
                             <li><a href="{% url 'review:fill_reviews' %}" class="link">fill reviews</a></li>
                         </ul>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -72,7 +74,35 @@
                                 </div>
                             </div>
                             <div class="listing-button">
-                                <a href="/{{ listing.id }}/userListingProfile"><button class="btn btn-success ">View Details</button></a>
+                                <a href="/{{ listing.id }}/userListingProfile"><button class="btn rausch-bg ">View Details</button></a>
+                            </div>
+                        </div> 
+                    </div> 
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <div class="message-header">
+                    <div class="card-header">
+                        Your Future Trips ({{ future_trips.count }})
+                    </div>
+                </div>
+                {% if future_trips %}
+                <div class="user-card message-column">
+                    {% for trip in future_trips %}
+                    <div class="card-body review">
+                        <div class="review-list flex-container">
+                            <div>
+                                <div class="mini-location-img-box inline">
+                                    <img class="location-mini-img" src="{{ trip.listing.main_photo.url }}" alt="listing main img">
+                                </div>
+                                <div class="review-mini-info inline">
+                                    <h6>{{ trip.name }}</h6>       
+                                    <p style="margin-bottom: .2rem;">{{ trip.listing.name }}</p>
+                                    <p>{{ trip.start_date|date:"F d" }} - {{ trip.end_date }}</p>
+                                </div>
+                            </div>
+                            <div class="listing-button">
+                                <a href="/{{ trip.listing.id }}/listingdetails"><button class="btn rausch-bg ">View Details</button></a>
                             </div>
                         </div>
                     </div> 
@@ -81,19 +111,32 @@
                 {% endif %}
                 <div class="message-header">
                     <div class="card-header">
-                        Messages (0)
+                        Your Past Trips ({{ past_trips.count }})
                     </div>
                 </div>
+                {% if past_trips %}
                 <div class="user-card message-column">
-                    <div class="card-body message">
-                        <p>From: name <span>On: date</span></p>
-                        <p>message...</p>
-                    </div>
-                    <div class="card-body message">
-                        <p>From: name <span>On: date</span></p>
-                        <p>message...</p>
-                    </div>
+                    {% for trip in past_trips %}
+                    <div class="card-body review">
+                        <div class="review-list flex-container">
+                            <div>
+                                <div class="mini-location-img-box inline">
+                                    <img class="location-mini-img" src="{{ trip.listing.main_photo.url }}" alt="listing main img">
+                                </div>
+                                <div class="review-mini-info inline">
+                                    <h6>{{ trip.name }}</h6>       
+                                    <p style="margin-bottom: .2rem;">{{ trip.listing.name }}</p>
+                                    <p>{{ trip.start_date|date:"F d" }} - {{ trip.end_date }}</p>
+                                </div>
+                            </div>
+                            <div class="listing-button">
+                                <a href="/{{ trip.listing.id }}/listingdetails"><button class="btn rausch-bg ">Rate this Trip</button></a>
+                            </div>
+                        </div>
+                    </div> 
+                    {% endfor %}
                 </div>
+                {% endif %}
                 <div class="message-header">
                     <div class="card-header">
                         Your Reviews ({{ reviews.count }}) 
@@ -123,6 +166,7 @@
 
 
     {% include 'hub/userPictureModal.html' %}
+    
     
    
     {% endblock body %}

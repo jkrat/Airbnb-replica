@@ -40,7 +40,6 @@ def login_user(request):
         request.session['data'] = {
             'id': user.id,
             'firstName': user.firstName,
-            'link': "Log out",
             'logged_in': True
         }
         return redirect(reverse("hub:home"))

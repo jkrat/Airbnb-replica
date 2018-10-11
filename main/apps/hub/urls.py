@@ -11,6 +11,7 @@ urlpatterns = [
     path('<int:listing_id>/userListingProfile/', views.userListingProfile, name="userListingProfile"),
     path('filters/', views.filters, name="filters"),
     path('search/', views.search, name="search"),
+    path('searchclick/', views.searchclick, name="searchclick"),
     path('filterResults/', views.filterResults, name="filterResults"),
     path('searchResults/', views.searchResults, name="searchResults")
 ]

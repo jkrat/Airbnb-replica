@@ -18,8 +18,8 @@
             {% endif %}
             {% if "id" in request.session.data %}
             <a id="User-in-nav" class="nav-link" href="{% url 'hub:profile' %}">{{ request.session.data.firstName }}</a>
-            <a class="nav-link" href="{% url 'user:logout' %}">{{ request.session.data.link }}</a>
-                {% else %}
+            <a class="nav-link" href="{% url 'user:logout' %}">Logout</a>
+            {% else %}
                 <a class="nav-link getModal" data-toggle="modal" href="#registerModal">Sign Up</a>
                 <a class="nav-link loginModalLink getModal" data-toggle="modal" href="#loginModal">Log in</a>
             {% endif %}

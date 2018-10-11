@@ -18,27 +18,30 @@
     <div id="dashboard-cover"></div>
 
 <!-- top destinations -->
-    <div class="container filterbar-margin">
-        <h5 class="top-destination-header">Travel the world with Airbnb</h5>
+<div class="container filterbar-margin">
+    <h5 class="top-destination-header">Find a place to stay where ever you are</h5>
+    <form id="topcity-form" method="post">
+            {% csrf_token %}
         <div class="top-destinations">
-            <div class="d-block topcity"><a href="">
-                <img class="top-card" src="{% static 'hub/images/florence_top.png' %}" alt="">
-                <p class="top-card">Florence</p>            
-            </a></div>
-            <div class="d-none d-sm-block topcity"><a href="">
-                <img class="top-card" src="{% static 'hub/images/budapest_top.png' %}" alt="">
-                <p class="top-card">Budapest</p>            
-            </a></div>
-            <div class="d-none d-md-block topcity"><a href="">
-                <img class="top-card" src="{% static 'hub/images/florence_top.png' %}" alt="">
-                <p class="top-card">New York City</p>            
-            </a></div>
-            <div class="d-none d-lg-block topcity"><a href="">
-                <img class="top-card" src="{% static 'hub/images/budapest_top.png' %}" alt="">
-                <p class="top-card">Athens</p>            
-            </a></div>
+            <div class="d-block topcity">
+                <img class="top-card" src="{% static 'hub/images/Chicago2.jpeg' %}" alt="">
+                <p class="top-card">Chicago</p>            
+            </div>
+            <div class="d-none d-sm-block topcity">
+                <img class="top-card" src="{% static 'hub/images/Dallas2.jpg' %}" alt="">
+                <p class="top-card">Dallas</p>            
+            </div>
+            <div class="d-none d-md-block topcity">
+                <img class="top-card" src="{% static 'hub/images/nyc2.jpg' %}" alt="">
+                <p class="top-card">New York</p>            
+            </div>
+            <div class="d-none d-lg-block topcity">
+                <img class="top-card" src="{% static 'hub/images/seattle1.jpg' %}" alt="">
+                <p class="top-card">Seattle</p>            
+            </div>
         </div>
-    </div>
+    </form> 
+</div>
     
     <div class="container" id="listing_grid">
             {% include 'hub/listingsGrid.html' %}
@@ -50,18 +53,6 @@
     {% block scripts %}
     <script>
 
-
-    $("#click").click(function() {
-        console.log("clicked card");
-        $.ajax({url: "{% url 'hub:landing' %}", success: function(result){
-            return(result);
-        }
-            // method:"GET",
-            // url: "/listing/",
-            // async: true
-        });
-        return false;
-    });
     </script>
     
     {% endblock scripts %}

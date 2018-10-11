@@ -2,9 +2,9 @@
 <div class="filters ">
     <div class="container">
         <nav class="nav nav-pills">
-            <button id="dates" class="nav-link nav-item indvFilter active">All dates</button>
-            <button id="guests" class="nav-link nav-item indvFilter active">1 guest</button>
-            <div class="d-none d-md-block">
+            <!-- <button id="dates" class="nav-link nav-item indvFilter active">All dates</button>
+            <button id="guests" class="nav-link nav-item indvFilter active">1 guest</button> -->
+            <!-- <div class="d-none d-md-block">
                 <button id="type" class="nav-link nav-item indvFilter">Home type</button>
             </div>
             <div class="d-none d-md-block">
@@ -15,6 +15,9 @@
             </div>
             <div class="d-sm-block d-md-none">
                     <a href="#"><button id="small-more-filters" class="nav-link nav-item indvFilter">Filters</button></a>
+            </div> -->
+            <div class="">
+                <a href="{% url 'hub:filters' %}"><button id="more-filters" class="nav-link nav-item indvFilter">Filters</button></a>
             </div>
         </nav>
     </div>

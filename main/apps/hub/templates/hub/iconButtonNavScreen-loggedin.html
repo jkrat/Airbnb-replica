@@ -13,7 +13,7 @@
 
 
     {% block body %} 
-
+    {% if "id" in request.session.data %}
     <div id="icon-menu-margin" class="menu">
         <div >
             <a class="menu-home-link" href="{% url 'hub:home' %}"><div>Home</div></a>
@@ -40,7 +40,7 @@
                 <li>
                     <a href="{% url 'hub:profile' %}">
                         <div class="flex-container">
-                            <span>Messages</span>
+                            <span>Reviews</span>
                             <i class="far fa-envelope fa-lg"></i>
                         </div>
                     </a>
@@ -71,6 +71,43 @@
         </div>
         <hr>
     </div>
+    {% else %}
+    <div id="icon-menu-margin" class="menu">
+        <div>
+            <a class="menu-home-link" href="{% url 'hub:home' %}"><div>Home</div></a>
+        </div>
+        <hr>
+        <div class="roomtype">
+            <ul>
+                <li>
+                    <a data-toggle="modal" href="#registerModal">
+                        <div class="flex-container">
+                            <span>Sign up</span>
+                            <i class="fas fa-user-plus fa-lg"></i>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a data-toggle="modal" href="#loginModal">
+                        <div class="flex-container">
+                            <span>Login</span>
+                            <i class="fas fa-user-circle fa-lg"></i>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a data-toggle="modal" href="#registerModal">
+                        <div class="flex-container">
+                            <span>Become a Host</span>
+                            <i class="fas fa-home fa-lg"></i>
+                        </div>
+                    </a>
+                </li>
+            </ul>      
+        </div>
+        <hr>
+    </div>
+    {% endif %}
 
     {% endblock body %}
 

@@ -8,7 +8,7 @@
           </button>
         </div>
         <div class="modal-body">
-            <form action="/listing/{{ listing.id}}/updatepic" method="post" enctype="multipart/form-data">
+            <form action="/listing/{{ listing.id}}/updatepic/" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for='newimg'>Upload image</label>
@@ -21,5 +21,5 @@
             </form>
         </div>
       </div>
-    </div>
+    </div> 
   </div> 

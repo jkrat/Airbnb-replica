@@ -27,23 +27,24 @@
     {% block body %} 
 
     <div id="small-filters-main" class="main">
-        <form action="">
+        <form action="{% url 'hub:filterResults' %}" method="POST">
+            {% csrf_token %}
            <div> 
                 <p class="first-filter-title">Property Type</p>
                 <div>
-                    <ul>
+                    <ul> 
                         <li>
-                            <input type="checkbox" class="home-type" name="home-type" value="entirePlace" checked>
+                            <input type="checkbox" class="home-type" name="homeType" value="ENITRE PLACE" checked>
                             <label for="">Entire place</label>
                             <p>Have a place to yourself</p>
                         </li>
                         <li>
-                            <input type="checkbox" class="home-type" name="home-type" value="privateRoom">
+                            <input type="checkbox" class="home-type" name="homeType" value="PRIVATE ROOM">
                             <label for="">Private room</label>
                             <p>Have your own room and share some common spaces</p>
                         </li>
                         <li>
-                            <input type="checkbox" class="home-type" name="home-type" value="sharedRoom">
+                            <input type="checkbox" class="home-type" name="homeType" value="SHARED ROOM">
                             <label for="">Shared room</label>
                             <p>Stray in a shared space, like a common room</p>
                         </li>
@@ -52,12 +53,12 @@
             </div>
             <hr class="small-screen">
             <div class="guests">
-                <p>Guest Count</p>
+                <p>Minimum Guest Count</p>
                 <ul>
                     <li class="flex-container">
                         <p>Guests</p>
                         <div>
-                            <input type="hidden" id="guestsinput" name="max-guests" value="1">
+                            <input type="hidden" id="guestsinput" name="guests" value="1">
                             <i id="guest-" class="fas fa-minus-circle fa-lg"></i>
                             <span id="guests">1</span>
                             <i id="guestup" class="fas fa-plus-circle fa-lg"></i>
@@ -70,7 +71,7 @@
                 <p>Rooms and beds</p>
                 <ul>
                     <li class="flex-container">
-                        <p>Beds</p>
+                        <p>Minimun Beds</p>
                         <div>
                             <input type="hidden" id="bedsinput" name="beds" value="0">
                             <i id="bed-" class="fas fa-minus-circle fa-lg"></i>
@@ -79,7 +80,7 @@
                         </div>
                     </li>
                     <li class="flex-container">
-                        <p>Bedrooms</p>
+                        <p>Minimum Bedrooms</p>
                         <div>
                             <input type="hidden" id="bedroomsinput" name="bedrooms" value="0">
                             <i id="bedroom-" class="fas fa-minus-circle fa-lg"></i>
@@ -88,7 +89,7 @@
                         </div>
                     </li>
                     <li class="flex-container">
-                        <p>Bathrooms</p>
+                        <p>Minimum Bathrooms</p>
                         <div>
                             <input type="hidden" id="bathroomsinput" name="bathrooms" value="0">
                             <i id="bathroom-" class="fas fa-minus-circle fa-lg"></i>
@@ -99,7 +100,7 @@
                 </ul>
             </div>
             <hr class="small-screen">
-            <div class="amenities">
+            <!-- <div class="amenities">
                 <div class="flex-container">
                     <a class="link" data-toggle="collapse" data-target="#amenity-options" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Show all amenities &#x022C1;</a>
                 </div>
@@ -119,11 +120,11 @@
                     </ul>
                 </div>
             </div>
-            <hr class="small-screen">
-            <p>Max Price</p>
+            <hr class="small-screen"> -->
+            <p>Max Price Per Night</p>
             <div class="rangeslider-container">
                 <div class="rangeslider-main">
-                    <input id="price-input" type="range" name="price" value="100" step="5" min="10" max="400">
+                    <input id="price-input" type="range" name="price" value="450" step="5" min="10" max="500">
                     <div class="rangeslider-range">
                         <small class="rangeslider-min pull-left">Min</small>
                         <small class="rangeslider-max pull-right">Max</small>
@@ -132,7 +133,7 @@
             </div>
             <hr class="small-screen">
             <div id="filter-submit-footer">
-                <button type="button" class="btn btn-block" href="{% url 'hub:filterResults' %}"> Show Homes</button>
+                <button type="submit" class="btn btn-block">Show Homes</button>
             </div>
         </form> 
     </div>

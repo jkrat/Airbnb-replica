@@ -34,10 +34,10 @@ $("#like").click(function() {
 });
 
 //toggle nav pills to active
-$(".indvFilter").click(function() {
-    console.log("filter");
-    $(this).addClass("active");
-});
+// $(".indvFilter").click(function() {
+//     console.log("filter");
+//     $(this).addClass("active");
+// });
 
 // Modal validation controllers
 $(".loginModalLink").click(function() {
@@ -112,28 +112,10 @@ $('#register-modal-form').submit(function(e){
 
 // Ajax call to search listings
 
-// $('#more-filters').click(function(){
-//     console.log("clicked");
-//     let city = "Dallas";
-//     $.ajax({
-//         url: '/search',
-//         data: {filter: city},
-//         success: function(response){
-//             $('#listing_grid').html(response)
-//         }
-//     })
-// });
-
-
-$('#searchbar_div').mouseover(function(){
-    console.log("mouse");
-});
-$('#searchbar_div').click(function(){
-    console.log("click");
-});
 $('#searchbar_div').submit(function(e){
     e.preventDefault();
-    console.log("keyup"); 
+    console.log("keyup");
+    console.log($(this).serialize());
         $.ajax({
         method: "POST",
         url: '/search/',
@@ -144,69 +126,36 @@ $('#searchbar_div').submit(function(e){
     })
 });
 
-// success: function(reponse){
-//     $('#listing_grid').html(repsonse)
-
-
-// $('#searchbar-div').keyup(function(){
-//     $.ajax({
-//         method: "POST",
-//         url: $this.attr('action'),
-//         data: $(this).serialize(),
-//         success: function(reponse){
-//             $('#listing_grid').html(repsonse)
-//         }
-//     })
-// })
-
-
-
-
-
-
-
-
-
-
-
-//link cards on dashboard to listing profile. NEED to customize to listing
-$("#click").click(function() {
-    console.log("clicked card");
-    // $.ajax({
-    //     type:"GET",
-    //     url: "/listing/", 
-    //     success: funciton() {
-    //         console.log("successful ajax request")
-    //     }
-    // });
-    // return false;
+$('.topcity').click(function(e){
+    e.preventDefault();
+    let city = this.children[1].firstChild.data;
+    var token = $('#topcity-form')[0].children[0].attributes[2].nodeValue;
+        $.ajax({
+        method: "POST",
+        url: '/searchclick/',
+        data: {
+            'city': city,
+            'csrfmiddlewaretoken': token
+        },
+        success: function(response){
+            $('#listing_grid').html(response)
+        }
+    })
 });
+ 
+// Checking screen width
 
-// check screen size with Modernizr
 var checkMod = function() {
     if (Modernizr.mq('(min-width: 992px)')) {
-        console.log("large");
-        $("#small-search-button-div").hide();
         $( "#logo-route" ).attr("href", "/home/");
-        return "large";
     } else if (Modernizr.mq('(min-width: 768px)')) {
-        console.log("medium");
-        $("#small-search-button-div").hide();
         $( "#logo-route" ).attr("href", "/menu/");
-        return "medium";
     } else if (Modernizr.mq('(min-width: 576px)')) {
-        console.log("small");
-        $("#small-search-button-div").hide();
-        $("#searchbar-div").show();
-        return "small";
+        $( "#logo-route" ).attr("href", "/menu/");
     } else {
-        console.log("extra-small");
-        $("#searchbar-div").hide();
-        $("#small-search-button-div").show();
-        return "extra-small";
+        $( "#logo-route" ).attr("href", "/menu/");
     }
 };
-
 
 $(function() {
     $(window).resize(checkMod);
